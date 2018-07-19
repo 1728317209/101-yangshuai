@@ -1,73 +1,123 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import MessageView from "./Message.js"
+import React from 'react';
+import MessageItemView from './components/MessageItem.js';
+import DialogView from './components/DialogView.js';
 import './App.css';
 
+// const icon = require('./resource/icon_Good_B-2.png');
 
+import icon from './resource/icon_Good_B-2.png';
 
-class App extends Component {
+class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      items_message: [
-        { "img": "./source/人.png", "title": "昵称A", "decription": "这是第一个item", "time": "08:00" },
-        { "img": "./source/人.png", "title": "昵称B", "decription": "这是第二个item", "time": "09:00" },
-        { "img": "./source/人.png", "title": "昵称C", "decription": "这是第三个item", "time": "10:00" }
-      ],
-      footer_message: [
-        { "img": "./source/消息.png", "title": "消息" },
-        { "img": "./source/通讯录.png", "title": "通讯录" },
-        { "img": "./source/发现.png", "title": "发现" },
-        { "img": "./source/我.png", "title": "我" }
-      ]
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            messages: [
+                {
+                    icon: icon,
+                    title: '小年糕',
+                    descript: 'hello 小年糕',
+                    time: '7-18 11:14'
+                },
+                {
+                    icon: icon,
+                    title: '小板凳',
+                    descript: 'hello 小板凳',
+                    time: '7-18 11:15',
+                },
+                {
+                    icon: icon,
+                    title: '小豆包',
+                    descript: 'hi 小豆包',
+                    time: '7-17 10:00',
+                }
+            ],
+            isDialogActive: false,
+            // newItemMessage: {
+            //     title: '',
+            //     descript: '',
+            //     time: ''
+            // }
+        }
     }
-  }
 
+    onItemClick = (message) => {
+        console.log(message);
+    }
+    //添加item
+    handleAddItem = obj => {
+        const newMessages = this.state.messages.slice();
+        newMessages.unshift({
+            icon: icon,
+            title: obj.title,
+            descript: obj.descript,
+            time: obj.time
+        });
+        this.setState({
+            messages: newMessages
+        });
+    }
+    //删除单个item
+    handleDelItem = () => {
+        const newMessages = this.state.messages.pop();
+        this.setState({
+            messages: newMessages
+        });
+    }
+    //置顶item
+    handleTopItem = () => {
 
-  Message_test = () =>{
-    const info = this.state.items_message.map((item, index) => {
-      return <MessageView items={item} keys={index} onclick={this.onClickItem}/>
-    });
-    return info;
-  }
+    }
 
-  render() {
-    return (
-      <div className="APP">
-        <header className="header">
-          <strong className="textmargin">微信</strong>
-          <img src="./img/加号.png" className="img-style1" alt="" onclick="show_title()" />
-        </header>
+    handleShowDialog = isActive => {
+        this.setState({ isDialogActive: isActive });
+    }
 
-        <div>
-          {this.Message_test()}
-        </div>
+    renderMessageList = () => {
+        const messageViews = this.state.messages.map((item, i) => {
+            return <MessageItemView key={i} item={item} onClick={this.onItemClick} ShowDialog={this.handleShowDialog.bind(this, true)}/>
+        });
+        return messageViews;
+    }
 
-        <footer className="footer-style">
-          <ul>
-            <li>
-              <div><img src="./img/消息.png" alt="" /></div>
-              微信
-            </li>
-            <li>
-              <div><img src="./img/通讯录.png" alt="" /></div>
-              通讯录
-            </li>
-            <li>
-              <div><img src="./img/发现.png" alt="" /></div>
-              发现
-            </li>
-            <li>
-              <div><img src="./img/我.png" alt="" /></div>
-              我
-            </li>
-          </ul>
-        </footer>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+
+                <nav className="chat-nav_head">
+                    <div className="chat-nav_head_item1">
+                        <strong>微信</strong>
+                    </div>
+                    <div className="chat-nav_head_item2" onClick={this.handleShowDialog.bind(this, true)}>
+                        <h2>+</h2>
+                    </div>
+                </nav>
+
+                <div className="chat-list">{this.renderMessageList()}</div>
+
+                <nav className="chat-nav">
+                    <div className="chat-nav__item" onClick={this.handleAddItem}>
+                        <img className="chat-nav__item__icon" src={icon} alt="" />
+                        <div className="chat-nav__item__name">微信</div>
+                    </div>
+                    <div className="chat-nav__item">
+                        <img className="chat-nav__item__icon" src={icon} alt="" />
+                        <div className="chat-nav__item__name">通讯录</div>
+                    </div>
+                    <div className="chat-nav__item">
+                        <img className="chat-nav__item__icon" src={icon} alt="" />
+                        <div className="chat-nav__item__name">发现</div>
+                    </div>
+                    <div className="chat-nav__item" onClick={this.handleShowDialog.bind(this, true)}>
+                        <img className="chat-nav__item__icon" src={icon} alt="" />
+                        <div className="chat-nav__item__name">我</div>
+                    </div>
+                </nav>
+                <DialogView isActive={this.state.isDialogActive} onCloseClick={this.handleShowDialog} handleAddItem={this.handleAddItem} />
+            </div>
+        );
+    }
 }
 
 export default App;
-
