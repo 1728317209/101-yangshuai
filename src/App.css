@@ -19,15 +19,19 @@ body {
         position: relative;
         display: flex;
         padding: 10px;
-        padding-left: 0;
+        padding-left: 10px;
         border-top: 1px solid #eee;
     }
-
+    .chat-list__item__check {
+        margin-top: 35%;
+        text-align: center;
+    }
     .chat-list__item__avatar {
         width: 60px;
         height: 60px;
-        margin-right: 10px;
-        margin-top: 10px;
+        /* margin-right: 10px; */
+        /* margin-top: 10px; */
+        text-align: center;
     }
     .chat-list__item__content {
         flex: 1;
@@ -92,7 +96,8 @@ body {
     .chat-nav_head_item1 {
         flex: 9;
         padding: 5px;
-        text-align: center;
+        padding-left: 50%;
+        font-size: 20px;
     }
     .chat-nav_head_item2 {
         flex: 1;

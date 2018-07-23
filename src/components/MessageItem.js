@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
+import MulSelect from './MulSelect'
 
 export default class MessageItem extends Component {
-  onMsgClick = () => {
-    const { onClick, item } = this.props;
-    if (onClick) {
-      onClick(item);
-    }
+
+  ShowDialog_C = () => {
+    const {index} = this.props;
+    this.props.ShowDialog_C(2, index);
   }
 
+  getIndexs = (e) => {
+    const {index} = this.props;
+    this.props.handleGetIndexs(index, e.target.checked)
+  }
+
+
   render(){
-    const { item } = this.props;
-    return(
-      <li className="chat-list__item" onClick={this.onMsgClick}>
-        <img className="chat-list__item__avatar" src={item.icon} alt="" />
-        <div className="chat-list__item__content">
-          <div className="chat-list__item__content__topBar">
-            <h2 className="chat-list__item__content__title">{item.title}</h2>
-            <div className="chat-list__item__content__time">{item['time']}</div>
-          </div>
-          <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
-          <div className="chat-list__item__content__btn" onClick={this.props.ShowDialog}>更多</div>
-        </div>
-      </li>
-    );
+    const { item, isMulSelect, index} = this.props;
+    return <MulSelect 
+      item={item} 
+      isMulSelect={isMulSelect} 
+      index={index} 
+      ShowDialog_C={this.ShowDialog_C} 
+      getIndexs={this.getIndexs}
+      />
   }
 }
 

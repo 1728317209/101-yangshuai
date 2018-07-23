@@ -1,9 +1,12 @@
 import React from 'react';
-import MessageItemView from './components/MessageItem.js';
-import DialogView from './components/DialogView.js';
+import MessageItemView from './components/MessageItem';
+import DialogView_B from './components/DialogView_B';
+import DialogView_C from './components/DialogView_C'
+import DialogView_D from './components/DialogView_D'
+import HeadView from './components/Head'
+import FootView from './components/Foot'
 import './App.css';
 
-// const icon = require('./resource/icon_Good_B-2.png');
 
 import icon from './resource/icon_Good_B-2.png';
 
@@ -33,18 +36,23 @@ class App extends React.Component {
                     time: '7-17 10:00',
                 }
             ],
-            isDialogActive: false,
-            // newItemMessage: {
-            //     title: '',
-            //     descript: '',
-            //     time: ''
-            // }
+            isDialogActive: 0,// Dialog的显示状态，有0、1、2三种
+            isMulSelect: false//是否多选
         }
+        this.idx = null;//单选删除 的 index
+        this.indexs = new Array(this.state.messages.length);//多选删除的选中状态数组
     }
 
-    onItemClick = (message) => {
-        console.log(message);
+    //第一个Dialog
+    handleShowDialog = Active_id => {
+        this.setState({ isDialogActive: Active_id });
     }
+    //第二个Dialog
+    handleShowDialog_C = (Active_id, index) => {
+        this.idx = index;
+        this.setState({ isDialogActive: Active_id });
+    }
+
     //添加item
     handleAddItem = obj => {
         const newMessages = this.state.messages.slice();
@@ -55,66 +63,114 @@ class App extends React.Component {
             time: obj.time
         });
         this.setState({
-            messages: newMessages
+            messages: newMessages,
+            isDialogActive: 0
         });
     }
+
     //删除单个item
     handleDelItem = () => {
-        const newMessages = this.state.messages.pop();
-        this.setState({
-            messages: newMessages
-        });
+        if(this.idx != null) {
+            const newMessages = this.state.messages.slice();
+            newMessages.splice(this.idx, 1);
+            this.setState({
+                messages: newMessages,
+                isDialogActive: 0
+            });
+            this.idx = null;
+        }
     }
+
     //置顶item
     handleTopItem = () => {
-
+        if(this.idx != null) {
+            const newMessages = this.state.messages.slice();
+            const obj = newMessages.splice(this.idx, 1);
+            newMessages.unshift(obj[0]);
+            this.setState({
+                messages: newMessages,
+                isDialogActive: 0
+            });
+            this.idx = null;
+        }
     }
 
-    handleShowDialog = isActive => {
-        this.setState({ isDialogActive: isActive });
+    //多选删除
+    handleMulSelect = () => {
+        this.setState({
+            isDialogActive: false,
+            isMulSelect: true
+        });
     }
+    handleGetIndexs = (idx, checked) => {
+        this.indexs[idx] = checked;
+    }
+    handleDelItems = () => {
+        //do del
+        const newMessages = this.state.messages.slice();
+        for(let i=this.indexs.length-1; i>=0; i--) {
+            if(this.indexs[i]){
+                newMessages.splice(i, 1);
+            }
+        }
+        this.setState({
+            messages: newMessages,
+            isMulSelect: false
+        });
+        const temp = new Array(this.state.messages.length);
+        this.indexs =  temp;
+    }
+
 
     renderMessageList = () => {
         const messageViews = this.state.messages.map((item, i) => {
-            return <MessageItemView key={i} item={item} onClick={this.onItemClick} ShowDialog={this.handleShowDialog.bind(this, true)}/>
+            return <MessageItemView 
+                handleGetIndexs={this.handleGetIndexs} 
+                isMulSelect={this.state.isMulSelect} 
+                index={i} 
+                item={item} 
+                onClick={this.onItemClick} 
+                ShowDialog_C={this.handleShowDialog_C}
+                />
         });
         return messageViews;
     }
 
+    renderDelBtn = () => {
+        return <DialogView_D 
+            isMulSelect={this.state.isMulSelect}
+            delItems={this.handleDelItems}
+            />
+    }
+
+
     render() {
         return (
             <div>
+                {/* head */}
+                <HeadView handleShowDialog={this.handleShowDialog}/>
+                {/* chat-list */}
+                <div className="chat-list">
+                    {this.renderDelBtn()}
+                    {this.renderMessageList()}
+                </div>
+                {/* foot */}
+                <FootView icon={icon}/>
+                {/* dialog_B */}
+                <DialogView_B 
+                    isActive={this.state.isDialogActive} 
+                    onCloseClick={this.handleShowDialog} 
+                    handleAddItem={this.handleAddItem} 
+                />
+                {/* dialog_C */}
+                <DialogView_C 
+                    isActive={this.state.isDialogActive} 
+                    onCloseClick={this.handleShowDialog} 
+                    handleDelItem={this.handleDelItem} 
+                    handleTopItem={this.handleTopItem} 
+                    handleMulSelect={this.handleMulSelect}
+                />
 
-                <nav className="chat-nav_head">
-                    <div className="chat-nav_head_item1">
-                        <strong>微信</strong>
-                    </div>
-                    <div className="chat-nav_head_item2" onClick={this.handleShowDialog.bind(this, true)}>
-                        <h2>+</h2>
-                    </div>
-                </nav>
-
-                <div className="chat-list">{this.renderMessageList()}</div>
-
-                <nav className="chat-nav">
-                    <div className="chat-nav__item" onClick={this.handleAddItem}>
-                        <img className="chat-nav__item__icon" src={icon} alt="" />
-                        <div className="chat-nav__item__name">微信</div>
-                    </div>
-                    <div className="chat-nav__item">
-                        <img className="chat-nav__item__icon" src={icon} alt="" />
-                        <div className="chat-nav__item__name">通讯录</div>
-                    </div>
-                    <div className="chat-nav__item">
-                        <img className="chat-nav__item__icon" src={icon} alt="" />
-                        <div className="chat-nav__item__name">发现</div>
-                    </div>
-                    <div className="chat-nav__item" onClick={this.handleShowDialog.bind(this, true)}>
-                        <img className="chat-nav__item__icon" src={icon} alt="" />
-                        <div className="chat-nav__item__name">我</div>
-                    </div>
-                </nav>
-                <DialogView isActive={this.state.isDialogActive} onCloseClick={this.handleShowDialog} handleAddItem={this.handleAddItem} />
             </div>
         );
     }
