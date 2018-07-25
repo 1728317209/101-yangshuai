@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { addItem, ShowDialog } from '../Actions/actions';
+
+
 import './DialogView.css';
 
 export default class DialogView extends Component {
@@ -15,7 +18,9 @@ export default class DialogView extends Component {
   }
 
   handleClose = () => {
-    this.props.onCloseClick(0);
+    const { dispatch } = this.props;
+    const action = ShowDialog(0);
+    dispatch(action);
   }
   
 
@@ -46,7 +51,9 @@ export default class DialogView extends Component {
         "descript": this.state.descript, 
         "time": this.state.time
       }
-      this.props.handleAddItem(obj);
+      const { dispatch } = this.props;
+      const action = addItem(obj);
+      dispatch(action);
       this.setState({
         title: '',
         descript: '',
@@ -58,7 +65,7 @@ export default class DialogView extends Component {
 
   render() {
     const { isActive } = this.props;
-    if (isActive != 1) {
+    if (isActive !== 1) {
       return null;
     }
     return (

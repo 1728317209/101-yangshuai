@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { ShowDialog } from '../Actions/actions';
 
 export default class Head extends Component {
 
     showDialog =  () => {
-        this.props.handleShowDialog(1);
+        const { dispatch } = this.props;
+        const action = ShowDialog(1);
+        dispatch(action);
     }
     render() {
         return (
