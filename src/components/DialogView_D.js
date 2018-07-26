@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { delItems } from '../Actions/actions';
+// import { delItems } from '../Actions/actions';
 
 import './DialogView.css';
 
 export default class DialogView extends Component {
 
     handleDelItems = () => {
-        const { dispatch } = this.props;
-        const action = delItems();
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.delItems();
     }
 
-
     render() {
-        const {isMulSelect} = this.props;
-        if (!isMulSelect) {
+        const {state} = this.props;
+        if (!state.isMulSelect) {
             return null;
         }
         return (

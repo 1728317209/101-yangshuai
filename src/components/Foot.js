@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import icon from '../resource/icon_Good_B-2.png';
 
 export default class Foot extends Component {
 
     render() {
-        const {icon} = this.props;
         return (
             <nav className="chat-nav">
                 <div className="chat-nav__item">

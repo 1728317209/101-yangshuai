@@ -1,6 +1,6 @@
 export const ADD_ITEM = 'ADD_ITEM'
 export const DEL_ITEM = 'DEL_ITEM'
-export const DEL_ITEM = 'DEL_ITEMS'
+export const DEL_ITEMS = 'DEL_ITEMS'
 export const TOP_ITEM = 'TOP_ITEM'
 export const SHOW_DIALOG_B = 'SHOW_DIALOG_B'
 export const SHOW_DIALOG_C = 'SHOW_DIALOG_C'

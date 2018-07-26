@@ -50,6 +50,7 @@ body {
         color: #aaa;
     }
     .chat-list__item__content__recentMsg {
+        display: inline;
         font-size: 14px;
         color: #aaa;
     }

@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
-import { delItem, topItem, ShowDialog } from '../Actions/actions';
+// import { delItem, topItem, ShowDialog } from '../Actions/actions';
 
 import './DialogView.css';
 
 export default class DialogView extends Component {
 
     handleClose = () => {
-        const { dispatch } = this.props;
-        const action = ShowDialog(0);
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.ShowDialog(0);
     }
 
     handleDelItem = () => {
-        const { dispatch } = this.props;
-        const action = delItem();
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.delItem();
     }
 
     handleTopItem = () => {
-        const { dispatch } = this.props;
-        const action = topItem();
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.topItem();
     }
 
     handleMulSelect = () => {
-        const { dispatch } = this.props;
-        const action = topItem();
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.mulSelectItems();
     }
 
 
 
     render() {
-        const { isActive } = this.props;
-
-        if (isActive !== 2) {
+        const { state } = this.props;
+        if (state.isDialogActive !== 2) {
             return null;
         }
         return (

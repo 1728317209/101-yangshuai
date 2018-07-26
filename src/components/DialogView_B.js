@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { addItem, ShowDialog } from '../Actions/actions';
-
-
 import './DialogView.css';
 
 export default class DialogView extends Component {
@@ -18,9 +15,8 @@ export default class DialogView extends Component {
   }
 
   handleClose = () => {
-    const { dispatch } = this.props;
-    const action = ShowDialog(0);
-    dispatch(action);
+    const { handleFunctions } = this.props;
+    handleFunctions.ShowDialog(0);
   }
   
 
@@ -42,6 +38,7 @@ export default class DialogView extends Component {
   }
 
   handleAdd = () => {
+    const { handleFunctions } = this.props;
     //校验 输入是否为空
     if (!this.state.title || !this.state.descript || !this.state.time) {
       alert("输入不能为空");
@@ -51,9 +48,7 @@ export default class DialogView extends Component {
         "descript": this.state.descript, 
         "time": this.state.time
       }
-      const { dispatch } = this.props;
-      const action = addItem(obj);
-      dispatch(action);
+      handleFunctions.addItem(obj);
       this.setState({
         title: '',
         descript: '',
@@ -64,8 +59,8 @@ export default class DialogView extends Component {
 
 
   render() {
-    const { isActive } = this.props;
-    if (isActive !== 1) {
+    const { state } = this.props;
+    if (state.isDialogActive !== 1) {
       return null;
     }
     return (

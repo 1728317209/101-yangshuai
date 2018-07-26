@@ -4,9 +4,8 @@ import { ShowDialog } from '../Actions/actions';
 export default class Head extends Component {
 
     showDialog =  () => {
-        const { dispatch } = this.props;
-        const action = ShowDialog(1);
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.ShowDialog(1);
     }
     render() {
         return (

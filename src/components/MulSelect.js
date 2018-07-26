@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
-import { ShowDialog_C, getIndex } from '../Actions/actions';
+// import { ShowDialog_C, getIndex } from '../Actions/actions';
 
 import ItemCheckBox from './itemCheckBox'
 import './DialogView.css';
 
 export default class MulSelect extends Component {
 
-    ShowDialog_C = () => {
-        const { dispatch } = this.props;
-        const action = ShowDialog_C(2, this.props.index);
-        dispatch(action);
-    }
-
+    
     getIndexs = (e) => {
-        const { dispatch } = this.props;
-        const action = getIndex(this.props.index, e.target.checked);
-        dispatch(action);
+        const { handleFunctions } = this.props;
+        handleFunctions.getIndex(this.props.index, e.target.checked);
+        }
+        
+    show = () => {
+        const { handleFunctions } = this.props;
+        handleFunctions.ShowDialog_C(2, this.props.index);
     }
-
     render() {
-        const { item, isMulSelect, index } = this.props;
+        const { item, index } = this.props;
+        const { state } = this.props;
             return (
                 <div className="chat-list">
                     <li className="chat-list__item">
                         <ItemCheckBox 
-                            isMulSelect={isMulSelect} 
+                            isMulSelect={state.isMulSelect} 
                             index={index} 
                             getIndexs={this.getIndexs}
                         />                        
@@ -35,7 +34,7 @@ export default class MulSelect extends Component {
                                 <div className="chat-list__item__content__time">{item['time']}</div>
                             </div>
                             <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
-                            <div className="chat-list__item__content__btn" onClick={this.ShowDialog_C}>更多</div>
+                            <div className="chat-list__item__content__btn" onClick={this.show}>更多</div>
                         </div>
                     </li>
                 </div>
