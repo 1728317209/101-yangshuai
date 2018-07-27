@@ -1,4 +1,4 @@
-import { ADD_ITEM, DEL_ITEM, TOP_ITEM, SHOW_DIALOG_B, SHOW_DIALOG_C, GET_INDEXS, MULDELITEMS, DEL_ITEMS } from '../Const/actionTypes';
+import { ADD_ITEM, DEL_ITEM, TOP_ITEM, SHOW_DIALOG_B, SHOW_DIALOG_C, GET_INDEX, GET_INDEXS, MULDELITEMS, DEL_ITEMS } from '../Const/actionTypes';
 
 export function addItem(obj) {
     return ({
@@ -15,7 +15,7 @@ export function delItem() {
 
 export function topItem() {
     return ({
-        type: TOP_ITEM,
+        type: TOP_ITEM
     })
 }
 
@@ -31,22 +31,27 @@ export function mulSelectItems() {
     })
 }
 
-export function ShowDialog(Active_id) {
+export function ShowDialog_B(Active_id) {
     return ({
         type: SHOW_DIALOG_B,
         Active_id
     })
 }
 
-export function ShowDialog_C(Active_id, idx) {
+export function ShowDialog_C(Active_id) {
     return ({
         type: SHOW_DIALOG_C,
-        Active_id,
-        idx
+        Active_id
     })
 }
 
-export function getIndex(idx, checked) {
+export function getIndex(idx) {
+    return ({
+        type: GET_INDEX,
+        idx
+    })
+}
+export function getIndexs(idx, checked) {
     return ({
         type: GET_INDEXS,
         idx,

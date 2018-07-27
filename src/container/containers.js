@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as itemHandleFunctions from '../Actions/actions';
-import HeadView from '../components/Head';
-import FootView from '../components/Foot';
-import MessageItemView from '../components/MessageItem';
-import DialogView_B from '../components/DialogView_B';
-import DialogView_C from '../components/DialogView_C';
+import HeadView from '../components/Head/Head';
+import FootView from '../components/Foot/Foot';
+import MessageItemView from '../components/ItemList/MessageItem';
+import DialogViewB from '../components/DialogView/DialogView_B';
+import DialogViewC from '../components/DialogView/DialogView_C';
 import '../App.css'
 
 class Container extends Component {
@@ -23,11 +23,11 @@ class Container extends Component {
                     state={ state }
                 />
                 <FootView />
-                <DialogView_B
+                <DialogViewB
                     handleFunctions={ handleFunctions }
                     state={ state }
                 />
-                <DialogView_C
+                <DialogViewC
                     handleFunctions={ handleFunctions }
                     state={ state }
                 />
@@ -43,6 +43,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         handleFunctions: bindActionCreators(itemHandleFunctions, dispatch)
+        //自动调用dispatch
     };
 }
 

@@ -12,7 +12,8 @@ body {
     
     
     .chat-list {
-        padding-left: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
         border-bottom: 1px solid #eee;
     }
     .chat-list__item {
