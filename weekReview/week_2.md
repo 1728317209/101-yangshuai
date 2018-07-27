@@ -10,11 +10,11 @@
 * 低耦合
 
 3、方法？
-* 从上往下、从下往上 结合，直到组建可以自治。
+* 从上往下、从下往上 结合，直到组件可以自治。
 
 ## redux
 1、为什么用redux?
-* react遗留问题：自组建的请求一级一级回调。
+* react遗留问题：子组件的请求一级一级回调。
 
 2、redux
 * store：存储数据（state）
@@ -29,6 +29,7 @@
 4、连接store
 * connect(mapStateToProps, mapDispatchToProps)(Container)
 * ...注入到Container中
+* 只连接一次
 
 5、reducer拆分与组合
 * combineReducers()
