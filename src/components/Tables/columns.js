@@ -4,7 +4,14 @@ import './tables.css'
 export const columns1 = [{
     title: '班级',
     dataIndex: 'degree',
-    // render: text => <a href="javascript:;">{text}</a>,
+    render: text => {
+        return (
+            <div>
+                <Icon type="exclamation-circle" />
+                <span>{text}</span>
+            </div>
+        );
+    }
 }, {
     title: '课程状态',
     dataIndex: 'status',
