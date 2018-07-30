@@ -1,110 +1,28 @@
-body {
-        margin: 0;
-    }
-    ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-    h2 {
-        margin: 0;
-    }
-    
-    
-    .chat-list {
-        padding-left: 5px;
-        padding-right: 5px;
-        border-bottom: 1px solid #eee;
-    }
-    .chat-list__item {
-        position: relative;
-        display: flex;
-        padding: 10px;
-        padding-left: 10px;
-        border-top: 1px solid #eee;
-    }
-    .chat-list__item__check {
-        margin-top: 35%;
-        text-align: center;
-    }
-    .chat-list__item__avatar {
-        width: 60px;
-        height: 60px;
-        /* margin-right: 10px; */
-        /* margin-top: 10px; */
-        text-align: center;
-    }
-    .chat-list__item__content {
-        flex: 1;
-    }
-    .chat-list__item__content__topBar {
-        overflow: hidden;
-        line-height: 32px;
-    }
-    .chat-list__item__content__title {
-        float: left;
-        font-size: 16px;
-    }
-    .chat-list__item__content__time {
-        float: right;
-        font-size: 12px;
-        color: #aaa;
-    }
-    .chat-list__item__content__recentMsg {
-        display: inline;
-        font-size: 14px;
-        color: #aaa;
-    }
-    .chat-list__item__content__btn {
-        float: right;
-        font-size: 12px;
-        color: #aaa;
-    }
-    .chat-nav {
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        width: 100%;
-        background-color: #fff;
-        border-top: 1px solid #eee;
-    }
-    .chat-nav__item {
-        flex: 1;
-        padding: 5px;
-        text-align: center;
-    }
-    .chat-nav__item__icon {
-        display: block;
-        width: 40px;
-        height: 40px;
-        margin: 0 auto;
-    }
-    .chat-nav__item__name {
-        font-size: 12px;
-        color: #aaa;
-    }
-    
-    .chat-nav_head {
-        /* position: fixed; */
-        top: 0;
-        display: flex;
-        width: 100%;
-        height: 50px;
-        background-color: #fff;
-        border-top: 1px solid #eee;
-        margin-bottom: 10px;
-        padding-top: 20px;
-    }
-    .chat-nav_head_item1 {
-        flex: 3;
-        padding: 5px;
-        padding-left: 45%;
-        font-size: 20px;
-    }
-    .chat-nav_head_item2 {
-        flex: 1;
-        padding: 10px;
-        text-align: center;
-    }
-    
-    
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
