@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from 'antd';
 import './tables.css'
 export const columns1 = [{
     title: '班级',
@@ -13,6 +14,14 @@ export const columns1 = [{
 }, {
     title: '老师 ',
     dataIndex: 'teacher',
+    render: text => {
+        return (
+            <div>
+                <Icon type="user" />
+                <span>{text}</span>
+            </div>
+        );
+    }
 }, {
     title: '上课率',
     dataIndex: 'rateOfAttend',
@@ -32,7 +41,7 @@ export const columns1 = [{
     title: '作业提交率',
     dataIndex: 'rateOfHomework',
     render: text=>{
-        let num = parseInt(text);
+        let num = parseInt(text, 10);
         if(num<80){
             return <span className="Red">{text}</span>
         }else if(num>95){
@@ -45,7 +54,7 @@ export const columns1 = [{
     title: '被点评情况',
     dataIndex: 'rateOfReview',
     render: text=>{
-        let num = parseInt(text);
+        let num = parseInt(text, 10);
         if(num<80){
             return <span className="Red">{text}</span>
         }else if(num>95){
@@ -73,7 +82,7 @@ export const columns1 = [{
     title: '满意度',
     dataIndex: 'rateOfSatisfaction',
     render: text=>{
-        let num = parseInt(text);
+        let num = parseInt(text, 10);
         if(num<80){
             return <span className="Red">{text}</span>
         }else if(num>95){
@@ -115,7 +124,7 @@ export const columns2 = [{
     title: '作业提交率',
     dataIndex: 'rateOfHomework',
     render: text=>{
-        let num = parseInt(text);
+        let num = parseInt(text, 10);
         if(num<80){
             return <span className="Red">{text}</span>
         }else if(num>95){
@@ -128,7 +137,7 @@ export const columns2 = [{
     title: '被点评情况',
     dataIndex: 'rateOfReview',
     render: text=>{
-        let num = parseInt(text);
+        let num = parseInt(text, 10);
         if(num<80){
             return <span className="Red">{text}</span>
         }else if(num>95){
@@ -156,7 +165,7 @@ export const columns2 = [{
     title: '满意度',
     dataIndex: 'rateOfSatisfaction',
     render: text=>{
-        let num = parseInt(text);
+        let num = parseInt(text, 10);
         if(num<80){
             return <span className="Red">{text}</span>
         }else if(num>95){
