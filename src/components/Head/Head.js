@@ -7,6 +7,7 @@ export default class Head extends Component {
 
     render() {
         const { Students_Info } = this.props;
+        console.log(Students_Info)
         return (
             <div className="head">
                 <div className="head-left">

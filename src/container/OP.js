@@ -15,6 +15,7 @@ class OP extends Component {
     }
     render() {
         const { state } = this.props;
+        console.log('123',state)
         return (
             <div>
                 <Head Students_Info={state.Students_Info[0]}/>

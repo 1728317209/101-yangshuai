@@ -13,8 +13,8 @@ function fun_render(text, type) {
         }
     }
     else if(type==='fraction') {
-        let num1 = parseInt(text.split("/")[0], 10);
-        let num2 = parseInt(text.split("/")[1], 10);
+        const num1 = parseInt(text.split("/")[0], 10);
+        const num2 = parseInt(text.split("/")[1], 10);
         const num = num1/num2;
         if(num<0.8){
             return <span className="Red">{text}</span>
