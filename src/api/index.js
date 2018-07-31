@@ -9,6 +9,7 @@ export function fetchUserInfo(next) {
     axios({
         method: 'POST',
         url: 'http://xly-wkop.xiaoniangao.cn/getUserInfo',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
         data: {
             mid: 'MID330900002'
         }
@@ -34,6 +35,7 @@ export function fetchLessonInfo(next) {
     axios({
         method: 'POST',
         url: 'http://xly-wkop.xiaoniangao.cn/getLessonInfo',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
         data: {
             mid: 'MID330900002'
         }
