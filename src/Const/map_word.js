@@ -9,11 +9,11 @@ export const mapStudents = {
     weChatNumber: '微信号码',
     remarks: '备注'
 }
-export const mapCourseDegree = {
-    advancedClass: '高阶班',
-    progressClass: '进阶班',
-    improveClass: '提高班',
-    juniorClass: '入门班',
-    informalClass: '体验班'
-}
+// export const mapCourseDegree = {
+//     advancedClass: '高阶班',
+//     progressClass: '进阶班',
+//     improveClass: '提高班',
+//     juniorClass: '入门班',
+//     informalClass: '体验班'
+// }
 

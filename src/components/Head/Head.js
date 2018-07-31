@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { mapStudents } from '../../Const/map_word'
 import './Head.css';
-import { Icon } from 'antd';
+import { Icon, Input, Button } from 'antd';
 
 export default class Head extends Component {
 
@@ -29,19 +29,21 @@ export default class Head extends Component {
                             <span>{`${mapStudents.lastLoginTime}: ${Students_Info.lastLoginTime}`}</span>
                         </div>
                         <div className="head-right-div">
-                            <div>
-                                <span>{`${mapStudents.phoneNumber}: ${Students_Info.phoneNumber}`}</span>
-                                <Icon type="file" className="icon"/>
+                            <div className="head-right-top">
+                                <span className="head-right-top-span">{`${mapStudents.phoneNumber}: ${Students_Info.phoneNumber}`}</span>
+                                <div className="icon">
+                                    <Icon type="file"/>    
+                                </div>
                             </div>
                             <div className="input">
                                 <span className="input-word">微信号码:</span>
-                                <input type='text' />
-                                <input className="input-btn" type='button' value='提交'/>
+                                <Input size="small" />
+                                <Button size="small" >提交</Button>
                             </div>
                             <div className="input">
                                 <span className="input-word">备注:</span>
-                                <input type='text' />
-                                <input className="input-btn" type='button' value='提交'/>
+                                <Input size="small" />
+                                <Button size="small">提交</Button>
                             </div>
                         </div>
                     </div>

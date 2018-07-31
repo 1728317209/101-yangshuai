@@ -24,7 +24,6 @@
 }
 .head-right-div {
     padding: 10px;
-    /* flex: 1; */
 }
 .head-img {
     margin: 15px;
@@ -39,13 +38,15 @@
 }
 .input-word {
     display: block;
-    width: 65px;
+    width: 120px;
 }
 .icon {
-    /* float: right; */
-    position: relative;
-    left: 70px;
+    padding-right: 37px;
 }
 span {
     padding: 2px;
+}
+.head-right-top {
+    display: flex;
+    justify-content: space-between;
 }

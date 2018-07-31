@@ -42,7 +42,7 @@ export const init_state = {
             rateOfHomework: '76.89%',
             rateOfReview: '31.87%',
             rateOfSign: '5/21',
-            rateOfSatisfaction: '98.14'
+            rateOfSatisfaction: '98.14%'
         },
         {
             degree: '提高班',
@@ -98,68 +98,3 @@ export const init_state = {
 
     
 }
-
-
-
-/*
-advancedClass: {
-            degree: advancedClass,
-            classId: '001',
-            status: '进行中',
-            startTime: '2017-04-20',
-            teacher: '小白老师',
-            rateOfAttend: '3/21',
-            rateOfHomework: '67.98%',
-            rateOfReview: '87.98%',
-            rateOfSign: '1/21',
-            rateOfSatisfaction: '90.14%'
-        },
-        progressClass: {
-            degree: progressClass,
-            classId: '002',
-            status: '进行中',
-            startTime: '2017-04-21',
-            teacher: '小白老师',
-            rateOfAttend: '5/21',
-            rateOfHomework: '76.89%',
-            rateOfReview: '31.87%',
-            rateOfSign: '5/21',
-            rateOfSatisfaction: '98.14'
-        },
-        improveClass: {
-            degree: improveClass,
-            classId: '003',
-            status: '进行中',
-            startTime: '2017-04-22',
-            teacher: '小白老师',
-            rateOfAttend: '13/21',
-            rateOfHomework: '13.89%',
-            rateOfReview: '21.76%',
-            rateOfSign: '13/21',
-            rateOfSatisfaction: '88.01%'
-        },
-        juniorClass: {
-            degree: juniorClass,
-            classId: '004',
-            status: '进行中',
-            startTime: '2017-04-23',
-            teacher: '小白老师',
-            rateOfAttend: '13/21',
-            rateOfHomework: '13.89%',
-            rateOfReview: '21.76%',
-            rateOfSign: '13/21',
-            rateOfSatisfaction: '88.01%'
-        },
-        informalClass: {
-            degree: informalClass,
-            classId: '005',
-            status: '已结束',
-            startTime: '2017-04-24',
-            teacher: '小白老师',
-            rateOfAttend: '13/21',
-            rateOfHomework: '13.89%',
-            rateOfReview: '21.76%',
-            rateOfSign: '13/21',
-            rateOfSatisfaction: '88.01%'
-        }
-*/
