@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+// import { bindActionCreators } from 'redux';
+// import * as itemHandleFunctions from '../Actions/index'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
-import * as itemHandleFunctions from './Actions/index';
-
+import Head from '../Components/Head/Head';
+import TabBar from '../Components/TabBar/TabBar';
+import * as api from '../api/index';
 import './OP.css';
 
-import Head from './Components/Head/Head';
-import TabBar from './Components/TabBar/TabBar';
-
 class OP extends Component {
+    componentWillMount() {
+        const { dispatch } = this.props;
+        api.fetchUserInfo(dispatch);
+        api.fetchLessonInfo(dispatch);
+    }
     render() {
         const { state } = this.props;
         return (
@@ -29,7 +33,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        handleFunctions: bindActionCreators(itemHandleFunctions, dispatch)
+        // handleFunctions: bindActionCreators(itemHandleFunctions, dispatch)
+        dispatch
     };
 }
 

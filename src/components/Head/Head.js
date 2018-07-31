@@ -7,30 +7,29 @@ export default class Head extends Component {
 
     render() {
         const { Students_Info } = this.props;
-        // console.log("123",Students_Info);
         return (
             <div className="head">
                 <div className="head-left">
-                    <img className="head-img" src={Students_Info.icon} alt='' />
+                    <img className="head-img" src={Students_Info.hurl} alt='' />
                 </div>
                 <div className="head-right">
                     <div className="head-right-classId">
-                        <span>{`${Students_Info.classId}班人`}</span>
+                        <span>{`${Students_Info.nick}`}</span>
                     </div>
                     <div className="head-right-otherInfo">
                         <div className="head-right-div">
-                            <span>{`${mapStudents.studentId}: ${Students_Info.studentId}`}</span><br/>
-                            <span>{`${mapStudents.course}: ${Students_Info.course}`}</span><br/>
-                            <span>{`${mapStudents.admissionTime}: ${Students_Info.admissionTime}`}</span>
+                            <span>{`${mapStudents.studentId}: ${Students_Info.mid}`}</span><br/>
+                            <span>{`${mapStudents.course}: ${Students_Info.learningLesson}`}</span><br/>
+                            <span>{`${mapStudents.admissionTime}: ${Students_Info.enterDate}`}</span>
                         </div>
                         <div className="head-right-div">
-                            <span>{`${mapStudents.paidAmount}: ${Students_Info.paidAmount}`}</span><br/>
-                            <span>{`${mapStudents.howLong}: ${Students_Info.howLong}`}</span><br/>
-                            <span>{`${mapStudents.lastLoginTime}: ${Students_Info.lastLoginTime}`}</span>
+                            <span>{`${mapStudents.paidAmount}: ${Students_Info.history_pay}`}</span><br/>
+                            <span>{`${mapStudents.howLong}: ${Students_Info.totalLearningDays}`}</span><br/>
+                            <span>{`${mapStudents.lastLoginTime}: ${Students_Info.lastLoginDate}`}</span>
                         </div>
                         <div className="head-right-div">
                             <div className="head-right-top">
-                                <span className="head-right-top-span">{`${mapStudents.phoneNumber}: ${Students_Info.phoneNumber}`}</span>
+                                <span className="head-right-top-span">{`${mapStudents.phoneNumber}: ${Students_Info.tel}`}</span>
                                 <div className="icon">
                                     <Icon type="file"/>    
                                 </div>
@@ -52,4 +51,3 @@ export default class Head extends Component {
         );
     }
 }
-

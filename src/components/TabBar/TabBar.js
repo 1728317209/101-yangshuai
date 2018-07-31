@@ -16,7 +16,7 @@ export default class TabBar extends Component {
                         HistoryData={HistoryData}
                     />
                 </TabPane>
-                <TabPane tab="满意度反馈" key="2">这里是 满意度反馈 部分</TabPane>
+                <TabPane tab="满意度反馈" key="2"></TabPane>
             </Tabs>
         );
     }

@@ -4,10 +4,10 @@ import { Table } from 'antd';
 import { columns1, columns2 } from './columns';
 
 export default class Tables extends Component {
-
     render() {
         const { LearningCourse, HistoryData } = this.props;
         const pagination = false;
+        // const {dispatch} = this.props;
         return (
             <div className="table">
                 <Table
@@ -28,4 +28,3 @@ export default class Tables extends Component {
         );
     }
 }
-
