@@ -14,13 +14,11 @@ export function fetchUserInfo(next) {
             mid: 'MID330900002'
         }
     }).then(res => {
-        console.log(res.data.data);
         next({
             type: ActionTypes.FETCH_USER_INFO_SUC,
             data: res.data.data
         });
     }).catch(err => {
-        console.log(err);
         next({
             type: ActionTypes.FETCH_USER_INFO_FAI,
             err
@@ -40,13 +38,11 @@ export function fetchLessonInfo(next) {
             mid: 'MID330900002'
         }
     }).then(res => {
-        console.log(res.data.data);
         next({
             type: ActionTypes.FETCH_LESSON_INFO_SUC,
             data: res.data.data
         });
     }).catch(err => {
-        console.log(err);
         next({
             type: ActionTypes.FETCH_LESSON_INFO_FAI,
             err

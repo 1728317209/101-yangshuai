@@ -7,7 +7,6 @@ export default class Tables extends Component {
     render() {
         const { LearningCourse, HistoryData } = this.props;
         const pagination = false;
-        // const {dispatch} = this.props;
         return (
             <div className="table">
                 <Table
@@ -16,6 +15,7 @@ export default class Tables extends Component {
                     bordered
                     pagination={pagination}
                     title={() => '在学课程'}
+                    rowKey={record => record.classInfo.id}
                 />
                 <Table
                     columns={columns2}
@@ -23,6 +23,7 @@ export default class Tables extends Component {
                     bordered
                     pagination={pagination}
                     title={() => '历史数据'}
+                    rowKey={record => record.classInfo.id}
                 />
             </div>
         );

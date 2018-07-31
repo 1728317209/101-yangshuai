@@ -4,7 +4,7 @@ export default function StudentsInfo(state=init_state, action) {
     switch (action.type) {
         case ActionTypes.FETCH_USER_INFO_SUC: {
             const newState = {...state};
-            newState.Students_Info.unshift(action.data);
+            newState.Students_Info = action.data;
             return newState;
         }
         case ActionTypes.FETCH_LESSON_INFO_SUC: {

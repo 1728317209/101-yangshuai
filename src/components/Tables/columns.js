@@ -2,27 +2,21 @@ import React from 'react';
 import { Icon } from 'antd';
 import './tables.css'
 function fun_render(text, type) {
-
+    var num = null;
     if(type==='decimal') {
-        if(text<0.80){
-            return <span className="Red">{text}</span>
-        }else if(text>0.95){
-            return <span className="Orange">{text}</span>
-        }else{
-            return <span>{text}</span>
-        }
+        num = text;
     }
     else if(type==='fraction') {
         const num1 = parseInt(text.split("/")[0], 10);
         const num2 = parseInt(text.split("/")[1], 10);
-        const num = num1/num2;
-        if(num<0.8){
-            return <span className="Red">{text}</span>
-        }else if(num>0.95){
-            return <span className="Orange">{text}</span>
-        }else{
-            return <span>{text}</span>
-        }
+        num = num1/num2;
+    }
+    if(num<0.8){
+        return <span className="Red">{text}</span>
+    }else if(num>0.95){
+        return <span className="Orange">{text}</span>
+    }else{
+        return <span>{text}</span>
     }
 }
 export const columns1 = [{
@@ -83,9 +77,9 @@ export const columns2 = [{
     dataIndex: 'status',
     render: text => {
         if(text){
-            return <span>进行中</span>
-        }else {
             return <span>已结束</span>
+        }else {
+            return <span>进行中</span>
         }
     }
 }, {
