@@ -8,8 +8,8 @@ export default class Tables extends Component {
         const { LearningCourse, HistoryData } = this.props;
         const pagination = false;
         return (
-            <div className="table">
-                <Table
+            <div className="table-div">
+                <Table className="table-div"
                     columns={columns1}
                     dataSource={LearningCourse}
                     bordered
@@ -17,7 +17,7 @@ export default class Tables extends Component {
                     title={() => '在学课程'}
                     rowKey={record => record.classInfo.id}
                 />
-                <Table
+                <Table className="table-div"
                     columns={columns2}
                     dataSource={HistoryData}
                     bordered

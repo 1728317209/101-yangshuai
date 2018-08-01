@@ -1,0 +1,15 @@
+.head {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.div-left {
+    display: inline;
+}
+.div-right {
+    display: inline;
+}
+.Select {
+    padding-right: 0;
+}

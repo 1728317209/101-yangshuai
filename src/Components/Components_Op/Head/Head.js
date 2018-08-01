@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { mapStudents } from '../../Const/map_word'
-import './Head.css';
+import { mapStudents } from '../../../Const/map_word';
+import './this_head.css';
 import { Icon, Input, Button } from 'antd';
 
 export default class Head extends Component {

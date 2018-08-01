@@ -14,10 +14,17 @@ export function fetchUserInfo(next) {
             mid: 'MID330900002'
         }
     }).then(res => {
-        next({
-            type: ActionTypes.FETCH_USER_INFO_SUC,
-            data: res.data.data
-        });
+        if (res.data.ret === 1) {
+            return next({
+                type: ActionTypes.FETCH_USER_INFO_SUC,
+                data: res.data.data
+            });
+        }else {
+            next({
+                type: ActionTypes.FETCH_USER_INFO_FAI,
+                err: res.data.errMsg
+            });
+        }
     }).catch(err => {
         next({
             type: ActionTypes.FETCH_USER_INFO_FAI,

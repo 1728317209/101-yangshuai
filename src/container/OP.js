@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import * as itemHandleFunctions from '../Actions/index'
-import { connect } from 'react-redux'
-import Head from '../Components/Head/Head';
-import TabBar from '../Components/TabBar/TabBar';
-import * as api from '../api/index';
+import * as HandleActions from '../Actions'
+import { connect } from 'react-redux';
+import Head from '../Components/Components_Op/Head/Head';
+import TabBar from '../Components/Components_Op/TabBar/TabBar';
 import './OP.css';
 
 class OP extends Component {
     componentDidMount() {
-        const { dispatch } = this.props;
-        api.fetchUserInfo(dispatch);
-        api.fetchLessonInfo(dispatch);
+        const { Actions } = this.props;
+        const mid = 'MID330900002';
+        Actions.fetchUserInfo(mid);
+        Actions.fetchLessonInfo(mid);
     }
     render() {
-        const { state } = this.props;
+        const { OpInfo } = this.props;
         return (
             <div>
-                <Head Students_Info={state.Students_Info}/>
+                <Head Students_Info={OpInfo.Students_Info}/>
                 <TabBar 
-                    LearningCourse={state.LearningCourse}
-                    HistoryData={state.HistoryData}
+                    LearningCourse={OpInfo.LearningCourse}
+                    HistoryData={OpInfo.HistoryData}
                 />
             </div>
         );
@@ -29,12 +29,13 @@ class OP extends Component {
 
 
 function mapStateToProps(state) {
-    return { state };
+    return { 
+        OpInfo: state.OpInfo 
+    };
 }
 function mapDispatchToProps(dispatch) {
     return {
-        handleFunctions: bindActionCreators(itemHandleFunctions, dispatch),
-        dispatch
+        Actions: bindActionCreators(HandleActions, dispatch),
     };
 }
 

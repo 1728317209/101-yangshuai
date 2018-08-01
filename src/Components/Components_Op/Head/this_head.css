@@ -6,13 +6,9 @@
 }
 .head-left {
     margin: 10px;
-    display: inline;
 }
 .head-right {
-    width: 80%;
     margin: 10px;
-    float: left;
-    margin-right: 0;
 }
 .head-right-classId {
     padding-top: 20px;
@@ -24,9 +20,6 @@
 }
 .head-right-div {
     padding: 10px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-around; */
 }
 .head-img {
     margin: 10px;

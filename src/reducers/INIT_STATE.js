@@ -46,3 +46,14 @@ export const init_state = {
         // }
     ]
 }
+
+export const init_profile_state = {
+    Students_Info: []
+}
+
+export const init_class_state = {
+    basic_info: {},
+    real_teacher: {},
+    virtual_teacher: {},
+    list: []
+}
