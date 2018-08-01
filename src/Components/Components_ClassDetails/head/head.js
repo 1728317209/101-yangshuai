@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Icon, Input, Button, Select } from 'antd';
 // import './head.css';
 
 export default class Head extends Component {

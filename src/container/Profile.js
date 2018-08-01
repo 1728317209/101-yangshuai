@@ -15,10 +15,10 @@ class Profile extends Component {
     }
 
     render() {
-        const { ProfileInfo } = this.props;
+        const { ProfileInfo, Actions } = this.props;
         return (
             <div>
-                <Head  />
+                <Head select={Actions.select} />
                 <Tables ProfileInfo={ProfileInfo} />
             </div>
         );

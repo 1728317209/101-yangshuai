@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
-import { Icon, Input, Button, Select } from 'antd';
+import {  Input, Button, Select } from 'antd';
 import './head2.css';
-import Tables from '../tables/tables';
 
 export default class Head extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     const { ProfileInfo } = this.props;
-    //     const { StudentsInfo } = ProfileInfo;
-    //     console.log(123, ProfileInfo);
-    //     this.tempStudentsInfo = { ...StudentsInfo };
-    //     console.log(456, this.tempStudentsInfo);
-    // }
-
-    handleSelect = (mid) => {
-        // const { StudentsInfo } = this.props;
-        // this.tempStudentsInfo = StudentsInfo;
+    handleGetInput = (e) => {
+        this.mid = e.target.value;
+    }
+    handleSelect = () => {
+        const { select } = this.props;
+        select(this.mid);
+        
     }
     render() {
-        // const { StudentsInfo } = this.props;
+
         const Option = Select.Option;
         return (
             <div>
-                <div className="head">
+                <div className="thishead">
                     <div className="div-left">
                         <Button>汇总</Button>
                         <Button>摄影课</Button>
@@ -34,8 +28,8 @@ export default class Head extends Component {
                             <Option value="mid">mid</Option>
                             <Option value="null">null</Option>
                         </Select>
-                        <Input style={{ width: 180 }}/>
-                        <Button>搜索</Button>
+                        <Input onChange={this.handleGetInput} style={{ width: 180 }}/>
+                        <Button onClick={this.handleSelect}>搜索</Button>
                     </div>
                 </div>
             </div>

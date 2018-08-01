@@ -37,7 +37,6 @@ export const columns = [{
     dataIndex: 'review_status',
     render: text => fun_render(text)
 }, {
-}, {
     title: '打卡情况',
     dataIndex: 'clockin_status',
     render: text => fun_render(text)

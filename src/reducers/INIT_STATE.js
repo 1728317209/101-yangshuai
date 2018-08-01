@@ -48,7 +48,8 @@ export const init_state = {
 }
 
 export const init_profile_state = {
-    Students_Info: []
+    Students_Info: [],
+    SelectResult: []
 }
 
 export const init_class_state = {

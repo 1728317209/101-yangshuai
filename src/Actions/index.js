@@ -62,3 +62,9 @@ export function fetchClassInfo(id) {
     }
 }
 
+export function select(mid) {
+    return {
+        type: ActionTypes.SELECT,
+        mid
+    }
+}
