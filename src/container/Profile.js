@@ -18,7 +18,10 @@ class Profile extends Component {
         const { ProfileInfo, Actions } = this.props;
         return (
             <div>
-                <Head select={Actions.select} />
+                <Head 
+                    selectByMid={Actions.selectByMid} 
+                    selectByNick={Actions.selectByNick}
+                />
                 <Tables ProfileInfo={ProfileInfo} />
             </div>
         );

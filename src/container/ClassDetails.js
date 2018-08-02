@@ -10,14 +10,12 @@ class ClassDetails extends Component {
 
     componentWillMount() {
         const { Actions } = this.props;
-        const id = '765765';
+        const id = this.props.params.classId;//'765765';
         Actions.fetchClassInfo(id);
     }
 
     render() {
         const { ClassInfo } = this.props;
-        
-        // console.log(123456789, basic_info, real_teacher, virtual_teacher);
         return (
             <div >
                 <Head ClassInfo ={ ClassInfo } />

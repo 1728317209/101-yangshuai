@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from 'antd';
-// import './tables.css';
+import './tables.css';
 
 function fun_render(text) {
     if(text === 0) {
@@ -43,4 +43,11 @@ export const columns = [{
 }, {
     title: '满意度评分',
     dataIndex: 'satisfied_score',
+    render: text => {
+        if(text<5) {
+            return <span className="red">{text}</span>
+        }else {
+            return <span>{text}</span>
+        }
+    }
 }];

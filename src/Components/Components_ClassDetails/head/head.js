@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './head.css';
+import './head.css';
 
 export default class Head extends Component {
 
@@ -7,7 +7,7 @@ export default class Head extends Component {
         const { ClassInfo } = this.props;
         const { basic_info, real_teacher, virtual_teacher } = ClassInfo;
         return (
-            <div className="head">
+            <div className="class_head">
                 <strong>班级:{basic_info.name}</strong>
                 <strong>班级ID:{basic_info.id}</strong>
                 <strong>老师:{virtual_teacher.nick}/ID{virtual_teacher.id}/微信{virtual_teacher.wx_code}</strong>

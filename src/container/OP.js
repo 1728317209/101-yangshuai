@@ -9,18 +9,22 @@ import './OP.css';
 class OP extends Component {
     componentDidMount() {
         const { Actions } = this.props;
-        const mid = 'MID330900002';
+        const mid = this.props.params.mid;
         Actions.fetchUserInfo(mid);
         Actions.fetchLessonInfo(mid);
+        Actions.fetchSatisfiledList(mid)
     }
     render() {
-        const { OpInfo } = this.props;
+        const { OpInfo, router, Actions } = this.props;
         return (
             <div>
                 <Head Students_Info={OpInfo.Students_Info}/>
                 <TabBar 
                     LearningCourse={OpInfo.LearningCourse}
                     HistoryData={OpInfo.HistoryData}
+                    SatisfiledList={OpInfo.SatisfiledList}
+                    Actions={Actions}
+                    router={router}
                 />
             </div>
         );

@@ -1,23 +1,9 @@
-// import axios from 'axios';
-
-// export default store => next => action => {
-//     console.log(store, next, action);
-//     if (!action.SERVER_API) {
-//         return next(action);//如果没有这一步，不会执行redux-logger
-//     }
-//     //api里面的内容 挪到这里
-//     const { type, url, params } = action.SERVER_API;
-//     next({
-//         type: ``
-//     })
-// };
 import axios from 'axios';
 
 const API_DOMAIN = 'http://xly-wkop.xiaoniangao.cn';
 
 const callServerApi = (endpoint, params) => {
     return new Promise((resolve, reject) => {
-        console.log(API_DOMAIN + endpoint);
         axios({
             method: 'POST',
             url: API_DOMAIN + endpoint,
@@ -27,7 +13,6 @@ const callServerApi = (endpoint, params) => {
             data: params
         }).then(res => {
             if (res.data.ret === 1) {
-                console.log('res', res)
                 return resolve(res.data.data);
             }
             return reject({ errMsg: res.data.errMsg });
@@ -63,7 +48,7 @@ export default store => next => action => {
 
     return callServerApi(endpoint, params)
         .then(res => {
-            console.log('res', res)
+            // console.log('res', res);
             next({
                 type: `${type}_SUC`,
                 response: res

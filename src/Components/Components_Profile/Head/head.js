@@ -4,12 +4,25 @@ import './head2.css';
 
 export default class Head extends Component {
 
+    constructor(props) {
+        super(props);
+        //默认按mid搜索
+        this.option = 'mid';
+    } 
+    handleSelectChange = (value) => {
+        this.option = value;
+        console.log(value);
+    }
     handleGetInput = (e) => {
-        this.mid = e.target.value;
+        this.inputVal = e.target.value;
     }
     handleSelect = () => {
-        const { select } = this.props;
-        select(this.mid);
+        const { selectByMid, selectByNick } = this.props;
+        if(this.option === 'mid') {
+            selectByMid(this.inputVal);
+        }else if(this.option === 'nick') {
+            selectByNick(this.inputVal);
+        }
         
     }
     render() {
@@ -24,9 +37,9 @@ export default class Head extends Component {
                         <Button>绘画课</Button>
                     </div>
                     <div className="div-right">
-                        <Select  className="Select" defaultValue="mid" style={{ width: 68 }}>
+                        <Select  className="Select" defaultValue="mid" onChange={this.handleSelectChange} style={{ width: 70 }}>
                             <Option value="mid">mid</Option>
-                            <Option value="null">null</Option>
+                            <Option value="nick">nick</Option>
                         </Select>
                         <Input onChange={this.handleGetInput} style={{ width: 180 }}/>
                         <Button onClick={this.handleSelect}>搜索</Button>

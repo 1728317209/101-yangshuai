@@ -4,6 +4,7 @@ import Profile from './container/Profile';
 import ClassDetails from './container/ClassDetails';
 import './App.css';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { Router, browserHistory } from 'react-router'
 import { Provider } from 'react-redux';
 import rootReducer from './Reducers';
 import { createLogger } from 'redux-logger';
@@ -26,14 +27,40 @@ if (!(window.__REDUX_DEVTOOLS_EXTENSION__ || window.__REDUX_DEVTOOLS_EXTENSION__
   );
 }
 
+// const routes = [{
+//   path: '/',
+//   component: App,
+//   indexRoute: { component: Profile },
+//   childRoutes: [
+//     { path: 'op/:mid', 
+//       component: OP,
+//       indexRoute: { component: OP },
+//       childRoutes: [
+//         { path: 'classDetails:/classId', component: ClassDetails }
+//       ]
+//     }
+//   ]
+// }]
+
+const routes = [{
+  path: '/',
+  component: App,
+  indexRoute: { component: Profile },
+  childRoutes: [
+    { path: 'op/:mid', component: OP},
+    { path: 'classDetails/:classId', component: ClassDetails }
+  ]
+}]
+
 export default class App extends React.Component {
 
   render() {
     return (
       <Provider store={store}>
+        {/* <Profile /> */}
         {/* <OP /> */}
-        <Profile />
         {/* <ClassDetails /> */}
+        <Router routes={routes} history={browserHistory}/>
       </Provider>
     );
   }

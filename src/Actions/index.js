@@ -62,9 +62,35 @@ export function fetchClassInfo(id) {
     }
 }
 
-export function select(mid) {
+export function fetchSatisfiledList(mid) {
     return {
-        type: ActionTypes.SELECT,
+        SERVER_API: {
+            type: ActionTypes.FETCH_SATISFILED_INFO,
+            endpoint: '/getSatisfiledList',
+            params: {
+                mid
+            }
+        }
+    }
+}
+
+export function selectByMid(mid) {
+    return {
+        type: ActionTypes.SELECTBYMID,
         mid
+    }
+}
+
+export function selectByNick(nick) {
+    return {
+        type: ActionTypes.SELECTBYNICK,
+        nick
+    }
+}
+
+export function handleChangeReplyStatus(classId) {
+    return {
+        type: ActionTypes.CHANGEREPLYSTATUS,
+        classId
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Icon, Popover } from 'antd';
 import './tables.css'
 function fun_render(text, type) {
     var num = null;
@@ -42,10 +42,21 @@ export const columns1 = [{
     dataIndex: 'startTime',
 }, {
     title: '老师',
-    dataIndex: 'teacherInfo.nick',
+    dataIndex: 'teacherInfo',
     render: text => {
+        const content = (
+            <div>
+                <p>老师昵称:{text.nick}&nbsp;ID:{text.id}&nbsp;微信:{text.wxCode}</p>
+                <p>对应员工:{text.realName}&nbsp;MID:{text.mid}&nbsp;微信:{text.wxCode}</p>
+            </div>
+        )
         return (
-            <span><Icon type="user" /> {text}</span>
+            <div>
+                <Popover content={content}>
+                    <Icon type="user" />
+                </Popover>
+                {text.nick}
+            </div>
         );
     }
 }, {

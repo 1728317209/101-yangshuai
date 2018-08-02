@@ -8,10 +8,17 @@ export default function ProfileInfo(state=init_profile_state, action) {
             return newState;
         }
 
-        case ActionTypes.SELECT: {
+        case ActionTypes.SELECTBYMID: {
             const newState = {...state};
             newState.SelectResult = [];
             newState.SelectResult = newState.Students_Info.filter(item => item.mid.toString() === action.mid);
+            return newState;
+        }
+
+        case ActionTypes.SELECTBYNICK: {
+            const newState = {...state};
+            newState.SelectResult = [];
+            newState.SelectResult = newState.Students_Info.filter(item => item.nick === action.nick);
             return newState;
         }
 

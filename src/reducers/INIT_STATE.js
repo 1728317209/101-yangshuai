@@ -44,6 +44,9 @@ export const init_state = {
         //     signRate:'3/21',        
         //     satisfyRate:'0.9514'
         // }
+    ],
+    SatisfiledList: [
+        
     ]
 }
 
