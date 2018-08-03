@@ -8,7 +8,7 @@
 * 三个参数 method、url、params
 * GET请求的params是写在url中的
 
-3、promise(resolve、reject).then.catch()
+3、promise(resolve、reject).then().catch()
 
 
 ## 中间件
@@ -26,6 +26,7 @@
 4、next和dispatch的区别
 
 5、执行过程：
+* ??? componentDidMount
 
 
 ## 路由
