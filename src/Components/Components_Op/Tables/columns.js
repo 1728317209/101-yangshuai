@@ -1,6 +1,8 @@
 import React from 'react';
 import { Icon, Popover } from 'antd';
 import './tables.css'
+import { Link } from 'react-router'
+
 function fun_render(text, type) {
     var num = null;
     if(type==='decimal') {
@@ -19,12 +21,15 @@ function fun_render(text, type) {
         return <span>{text}</span>
     }
 }
-export const columns1 = [{
+const classId = 765765;
+export const columns = [{
     title: '班级',
     dataIndex: 'classInfo.name',
     render: text => {
         return (
-            <span><Icon type="exclamation-circle" /> {text}</span>
+            <Link to={`classDetails/${classId}`}>
+                <Icon type="exclamation-circle" /> {text}
+            </Link>
         );
     }
 }, {
@@ -52,53 +57,13 @@ export const columns1 = [{
         )
         return (
             <div>
-                <Popover content={content}>
+                <Popover content={content}>{/* trigger="click" */}
                     <Icon type="user" />
                 </Popover>
                 {text.nick}
             </div>
         );
     }
-}, {
-    title: '上课率',
-    dataIndex: 'enterRate',
-    render: (text) => fun_render(text, 'fraction')
-}, {
-    title: '作业提交率',
-    dataIndex: 'homeworkSubmitRate',
-    render: (text) => fun_render(text, 'decimal')
-}, {
-    title: '被点评情况',
-    dataIndex: 'beCommenttedRate',
-    render: (text) => fun_render(text, 'decimal')
-}, {
-    title: '打卡率 ',
-    dataIndex: 'signRate',
-    render: (text) => fun_render(text, 'fraction')
-}, {
-    title: '满意度',
-    dataIndex: 'satisfyRate',
-    render: (text) => fun_render(text, 'decimal')
-}];
-export const columns2 = [{
-    title: '班级',
-    dataIndex: 'classInfo.name',
-}, {
-    title: '课程状态',
-    dataIndex: 'status',
-    render: text => {
-        if(text){
-            return <span>已结束</span>
-        }else {
-            return <span>进行中</span>
-        }
-    }
-}, {
-    title: '开课时间',
-    dataIndex: 'startTime',
-}, {
-    title: '老师',
-    dataIndex: 'teacherInfo.nick',
 }, {
     title: '上课率',
     dataIndex: 'enterRate',

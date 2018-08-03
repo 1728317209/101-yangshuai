@@ -18,6 +18,7 @@ export default class TabBar extends Component {
                     <Tables 
                         LearningCourse={LearningCourse}
                         HistoryData={HistoryData}
+                        router={router}
                     />
                 </TabPane>
                 <TabPane tab="满意度反馈" key="2">

@@ -1,4 +1,17 @@
-.red {
+.satisfiedRed {
     color: red;
     font-weight: bold;
+    text-align: center;
+    display: block;
+}
+.checkIcon {
+    display: inline;
+}
+.satisfied {
+    text-align: center;
+    display: block;
+}
+.classTable {
+    padding: 30px;
+    padding-top: 10px;
 }

@@ -8,42 +8,42 @@ import './tables.css';
 export default class Tables extends Component {
 
     render() {
-        const { ProfileInfo } = this.props;
-        const { Students_Info } = ProfileInfo;
-        const { SelectResult } = ProfileInfo;
+        const { ProfileInfo, router } = this.props;
+        const { Students_Info, SelectResult } = ProfileInfo;
         const pagination = false;
-        const mid = 1001;
         if(!SelectResult.length) {
             return (
                 <div className="table-div">
-                    <Link to={`/op/${mid}`}>
-                        <Table className="table-div"
-                            columns={columns}
-                            dataSource={Students_Info}
-                            bordered
-                            pagination={pagination}
-                            title={() => ''}
-                            rowKey={record => record.mid}
-                            onRowClick={record => {
-                                // <Link to="/op"></Link>
-                            }}
-                        />
-                    </Link>
+                    <Table className="table-div"
+                        columns={columns}
+                        dataSource={Students_Info}
+                        bordered
+                        pagination={pagination}
+                        title={() => ''}
+                        rowKey={record => record.mid}
+                        locale={'无'}
+                        // locale = { emptyText: '无'}
+                        onRowClick={record => {
+                            router.push({ pathname : `/op/${record.mid}`});
+                        }}
+                    />
                 </div>
             );
         }else {
             return (
                 <div className="table-div">
-                    <Link to={`/op/${mid}`}>
-                        <Table className="table-div"
-                            columns={columns}
-                            dataSource={SelectResult}
-                            bordered
-                            pagination={pagination}
-                            title={() => ''}
-                            rowKey={record => record.mid}
-                        />
-                    </Link>
+                {/* <Link to={`/op/${mid}`}> */}
+                    <Table className="table-div"
+                        columns={columns}
+                        dataSource={SelectResult}
+                        bordered
+                        pagination={pagination}
+                        title={() => ''}
+                        rowKey={record => record.mid}
+                        onRowClick={record => {
+                            router.push({ pathname : `/op/${record.mid}`});
+                        }}
+                    />
                 </div>
             )
         }

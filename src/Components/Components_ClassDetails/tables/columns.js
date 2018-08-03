@@ -5,15 +5,15 @@ import './tables.css';
 function fun_render(text) {
     if(text === 0) {
         return (
-            <Icon type="close" />
+            <Icon type="close" className="checkIcon"/>
         );
     }else if(text === 1) {
         return (
-            <Icon type="check" />
+            <Icon type="check" className="checkIcon"/>
         );
     }else if(text === -1) {
         return (
-            <Icon type="minus" />
+            <Icon type="minus" className="checkIcon"/>
         );
     }
 }
@@ -45,9 +45,9 @@ export const columns = [{
     dataIndex: 'satisfied_score',
     render: text => {
         if(text<5) {
-            return <span className="red">{text}</span>
+            return <span className="satisfiedRed">{text}</span>
         }else {
-            return <span>{text}</span>
+            return <span className="satisfied">{text}</span>
         }
     }
 }];

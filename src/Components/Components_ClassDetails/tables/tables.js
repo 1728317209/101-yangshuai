@@ -10,13 +10,12 @@ export default class Tables extends Component {
         const { list } = ClassInfo;
         const pagination = false;
         return (
-            <div className="table-div">
-                <Table className="table-div"
+            <div>
+                <Table className="classTable"
                     columns={columns}
                     dataSource={list}
                     bordered
                     pagination={pagination}
-                    title={() => ''}
                     rowKey={record => record.mid}
                 />
             </div>

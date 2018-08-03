@@ -22,7 +22,7 @@ export default function OpInfo(state=init_state, action) {
             const newState = {...state};
             newState.SatisfiledList.filter(item => {
                 if(item.class_info.id === action.classId) {
-                    item.reply_status = 1;
+                    item.reply_status = !item.reply_status;
                 }
             })
             
