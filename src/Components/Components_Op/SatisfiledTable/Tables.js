@@ -10,15 +10,7 @@ export default class Tables extends Component {
     handleClick = (e) => {
         e.stopPropagation();
     }
-    SatisfiledList = (times, entities) => times.map( time => {
-        const SatisfiledInfo = entities.SatisfiledInfo[time];
-        return {
-            ...SatisfiledInfo,
-            teacher_info: entities.teachers[SatisfiledInfo.teacher_info],
-            class_info: entities.classes[SatisfiledInfo.class_info]
-        }
 
-    })
     render() {
         //columuns
         const columns = [{
@@ -73,13 +65,13 @@ export default class Tables extends Component {
                 }
             }
         }];
-        const { SatisfiledLessonTimes, entities } = this.props;
+        const { SatisfiledList } = this.props;
         const pagination = false;
         return (
             <div className="table-div">
                 <Table
                     columns={columns}
-                    dataSource={this.SatisfiledList(SatisfiledLessonTimes, entities)}
+                    dataSource={SatisfiledList}
                     bordered
                     pagination={pagination}
                     rowKey={record => record.class_info.id}

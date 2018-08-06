@@ -4,9 +4,7 @@ import './head.css';
 export default class Head extends Component {
 
     render() {
-        const { ClassInfo } = this.props;
-        const { basic_info, real_teacher, virtual_teacher } = ClassInfo;
-        // const { real_teacher, virtual_teacher } = basic_info;
+        const { basic_info, real_teacher, virtual_teacher } = this.props;
         return (
             <div className="class_head">
                 <strong>班级:{basic_info.name}</strong>

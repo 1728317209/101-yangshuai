@@ -20,14 +20,14 @@ export default function OpInfo(state=init_state, action) {
             const newState = {...state};
             const { SatisfiledInfo } = action.response;
             newState.SatisfiledLessonTimes = SatisfiledInfo.result;
-            newState.entities.SatisfiledInfo = { ...SatisfiledInfo.entities.SatisfiledInfo};
-            newState.entities.classes = { ...SatisfiledInfo.entities.classes };
-            newState.entities.teachers = { ...SatisfiledInfo.entities.teacher};
+            newState.satisfiledEntities.SatisfiledInfo = { ...SatisfiledInfo.entities.SatisfiledInfo};
+            newState.satisfiledEntities.classes = { ...SatisfiledInfo.entities.classes };
+            newState.satisfiledEntities.teachers = { ...SatisfiledInfo.entities.teacher};
             return newState;
         }
         case ActionTypes.CHANGEREPLYSTATUS: {
             const newState = {...state};
-            newState.entities.SatisfiledInfo[action.classTime].reply_status = 1; //!newState.entities.SatisfiledInfo[action.classTime].reply_status;
+            newState.satisfiledEntities.SatisfiledInfo[action.classTime].reply_status = 1; //!newState.entities.SatisfiledInfo[action.classTime].reply_status;
             return newState;
         }
         case ActionTypes.FETCH_USER_INFO_FAI: {

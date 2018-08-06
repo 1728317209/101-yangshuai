@@ -11,15 +11,13 @@ export default class Tables extends Component {
     })
 
     render() {
-        const { ClassInfo } = this.props;
-        const { coursesList } = ClassInfo;
-        const { courseEntities, courseTimes } = coursesList;
+        const { courses } = this.props;
         const pagination = false;
         return (
             <div>
                 <Table className="classTable"
                     columns={columns}
-                    dataSource={this.list(courseEntities, courseTimes)}
+                    dataSource={courses}
                     bordered
                     pagination={pagination}
                     rowKey={record => record.mid}

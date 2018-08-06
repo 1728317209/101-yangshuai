@@ -9,7 +9,7 @@ export const init_state = {
         entities: {}
     },
     SatisfiledLessonTimes: [],
-    entities: {
+    satisfiledEntities: {
         teachers: {},
         classes: {},
         SatisfiledInfo: {}

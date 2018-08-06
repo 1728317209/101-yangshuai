@@ -15,7 +15,8 @@ class Profile extends Component {
     }
 
     render() {
-        const { ProfileInfo, Actions, router } = this.props;
+        const { Actions, router } = this.props;
+        const { StudentsInfo, SelectedStudents, SelectedMids} = this.props;
         return (
             <div className="profile">
                 <Head 
@@ -23,7 +24,9 @@ class Profile extends Component {
                     selectByNick={Actions.selectByNick}
                 />
                 <Tables 
-                    ProfileInfo={ProfileInfo} 
+                    StudentsInfo={StudentsInfo}
+                    SelectedStudents={SelectedStudents}
+                    SelectedMids={SelectedMids}
                     router={router}
                 />
             </div>
@@ -33,8 +36,16 @@ class Profile extends Component {
 
 
 function mapStateToProps(state) {
+    const {ProfileInfo} =  state;
+    const { StudentsMids, StudentsEntities, SelectedMids } = ProfileInfo;
     return { 
-        ProfileInfo: state.ProfileInfo
+        StudentsInfo: StudentsMids.map(mid => {
+            return StudentsEntities[mid];
+        }),
+        SelectedStudents: SelectedMids.map(mid => {
+            return StudentsEntities[mid];
+        }),
+        SelectedMids: SelectedMids
     };
 }
 function mapDispatchToProps(dispatch) {

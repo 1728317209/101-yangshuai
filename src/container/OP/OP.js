@@ -15,18 +15,16 @@ class OP extends Component {
         Actions.fetchSatisfiledList(mid)
     }
     render() {
-        const { OpInfo, router, Actions } = this.props;
+        const { Students_Info, router, Actions, currentLessons, historyLessons, SatisfiledList } = this.props;
         return (
             <div className="OP">
-                <Head Students_Info={OpInfo.Students_Info}/>
+                <Head Students_Info={Students_Info}/>
                 <TabBar 
-                    currentLessonIds={OpInfo.currentLessonIds}
-                    historyLessonIds={OpInfo.historyLessonIds}
-                    lessonEntities={OpInfo.lessonEntities}
-                    SatisfiledLessonTimes={OpInfo.SatisfiledLessonTimes}
-                    entities={OpInfo.entities}
                     Actions={Actions}
                     router={router}
+                    currentLessons={currentLessons}
+                    historyLessons={historyLessons}
+                    SatisfiledList={SatisfiledList}
                 />
             </div>
         );
@@ -35,8 +33,32 @@ class OP extends Component {
 
 
 function mapStateToProps(state) {
+    const { Students_Info, currentLessonIds, historyLessonIds, lessonEntities, SatisfiledLessonTimes, satisfiledEntities } = state.OpInfo;
+    const { classes, teachers, entities } = lessonEntities;
     return { 
-        OpInfo: state.OpInfo 
+        currentLessons: currentLessonIds.map(id => {
+            return {
+                ...entities[id],
+                classInfo: classes[entities[id].classInfo],
+                teacherInfo: teachers[entities[id].teacherInfo]
+            }
+        }),
+        historyLessons: historyLessonIds.map(id => {
+            return {
+                ...entities[id],
+                classInfo: classes[entities[id].classInfo],
+                teacherInfo: teachers[entities[id].teacherInfo]
+            }
+        }),
+        SatisfiledList: SatisfiledLessonTimes.map(time => {
+            const SatisfiledInfo = satisfiledEntities.SatisfiledInfo[time];
+            return {
+                ...SatisfiledInfo,
+                teacher_info: satisfiledEntities.teachers[SatisfiledInfo.teacher_info],
+                class_info: satisfiledEntities.classes[SatisfiledInfo.class_info]
+            }
+        }),
+        Students_Info: Students_Info
     };
 }
 function mapDispatchToProps(dispatch) {

@@ -10,24 +10,15 @@ export default class Tables extends Component {
         router: PropTypes.object.isRequired,
     }
 
-    lessons = (lessonIds, entities, classes, teachers) => lessonIds.map(id => {
-        return {
-            ...entities[id],
-            classInfo: classes[entities[id].classInfo],
-            teacherInfo: teachers[entities[id].teacherInfo]
-        }
-    })
-
     render() {
-        const { currentLessonIds, historyLessonIds, lessonEntities } = this.props;
-        const { classes, teachers, entities } = lessonEntities;
+        const { currentLessons, historyLessons } = this.props;
         const pagination = false;
         return (
             <div className="table-div">
                 <div className="table">
                     <Table
                         columns={columns}
-                        dataSource={this.lessons(currentLessonIds, entities, classes, teachers)}
+                        dataSource={currentLessons}
                         bordered
                         pagination={pagination}
                         title={() => '在学课程'}
@@ -44,7 +35,7 @@ export default class Tables extends Component {
                 <div className="table">
                     <Table className="table-div"
                         columns={columns}
-                        dataSource={this.lessons(historyLessonIds, entities, classes, teachers)}
+                        dataSource={historyLessons}
                         bordered
                         pagination={pagination}
                         title={() => '历史数据'}

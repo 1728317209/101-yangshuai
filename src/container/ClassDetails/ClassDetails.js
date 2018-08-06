@@ -15,11 +15,15 @@ class ClassDetails extends Component {
     }
 
     render() {
-        const { ClassInfo } = this.props;
+        const { courses, basic_info, real_teacher, virtual_teacher } = this.props;
         return (
             <div className="ClassDetails">
-                <Head ClassInfo ={ ClassInfo } />
-                <Tables ClassInfo ={ ClassInfo }/>
+                <Head 
+                    basic_info ={ basic_info } 
+                    real_teacher={real_teacher}
+                    virtual_teacher={virtual_teacher}
+                />
+                <Tables courses ={ courses }/>
             </div>
         );
     }
@@ -27,8 +31,15 @@ class ClassDetails extends Component {
 
 
 function mapStateToProps(state) {
+    const { coursesList, basic_info, virtual_teacher, real_teacher } = state.ClassInfo;
+    const { courseEntities, courseTimes } = coursesList;
     return { 
-        ClassInfo: state.ClassInfo
+        courses: courseTimes.map(time => {
+            return courseEntities[time];
+        }),
+        basic_info: basic_info,
+        virtual_teacher: virtual_teacher,
+        real_teacher: real_teacher
     };
 }
 function mapDispatchToProps(dispatch) {
