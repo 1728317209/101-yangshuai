@@ -1,18 +1,6 @@
-// import * as ActionTypes from '../Const/ActionTypes';
-
-// export function fetchUserInfo(mid) {
-//     return {
-//         SERVER_API: {//特殊action的标记
-//             type: ActionTypes.FETCH_USER_INFO,
-//             url: 'http://xly-wkop.xiaoniangao.cn/getUserInfo',
-//             params: {
-//                 mid
-//             }
-//         }
-//     }
-// }
-
+import { normalize } from 'normalizr';
 import * as ActionTypes from '../Const/ActionTypes';
+import * as Schema from '../schema/index';
 
 export function fetchUserInfo(mid) {
     return {
@@ -33,6 +21,12 @@ export function fetchLessonInfo(mid) {
             endpoint: '/getLessonInfo',
             params: {
                 mid
+            },
+            normalizeFuc: json => {
+                return {
+                    current: normalize(json.currentLessonsList, Schema.lessonListSchema),
+                    history: normalize(json.historyLessonsList, Schema.lessonListSchema)
+                };
             }
         }
     }
@@ -45,18 +39,11 @@ export function fetchStudentsInfo(mid) {
             endpoint: '/getStudentList',
             params: {
                 mid
-            }
-        }
-    }
-}
-
-export function fetchClassInfo(id) {
-    return {
-        SERVER_API: {
-            type: ActionTypes.FETCH_CLASS_INFO,
-            endpoint: '/getClassInfo',
-            params: {
-                id
+            },
+            normalizeFuc: json => {
+                return {
+                    StudentsInfo: normalize(json, Schema.StudentsInfoSchema),
+                };
             }
         }
     }
@@ -69,6 +56,29 @@ export function fetchSatisfiledList(mid) {
             endpoint: '/getSatisfiledList',
             params: {
                 mid
+            },
+            normalizeFuc: json => {
+                return {
+                    SatisfiledInfo: normalize(json.list, Schema.SatisfiledInfoSchema)
+                };
+            }
+        }
+    }
+}
+
+export function fetchClassInfo(id) {
+    return {
+        SERVER_API: {
+            type: ActionTypes.FETCH_CLASS_INFO,
+            endpoint: '/getClassInfo',
+            params: {
+                id
+            },
+            normalizeFuc: json => {
+                return {
+                    coursesList: normalize(json.list, Schema.classInfoSchema),
+                    basicInfo: json.basic_info
+                };
             }
         }
     }
@@ -88,9 +98,9 @@ export function selectByNick(nick) {
     }
 }
 
-export function handleChangeReplyStatus(classId) {
+export function handleChangeReplyStatus(classTime) {
     return {
         type: ActionTypes.CHANGEREPLYSTATUS,
-        classId
+        classTime
     }
 }

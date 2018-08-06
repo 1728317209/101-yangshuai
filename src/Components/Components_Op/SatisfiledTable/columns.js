@@ -1,6 +1,11 @@
 import React from 'react';
 import { Icon, Popover } from 'antd';
 
+
+function handleClick(e) {
+    e.stopPropagation();
+}
+
 export const columns = [{
     title: '教程',
     dataIndex: 'course_name',
@@ -19,8 +24,8 @@ export const columns = [{
         )
         return (
             <div>
-                <Popover content={content}>
-                    <Icon type="user" />
+                <Popover content={content} trigger="click">
+                    <Icon type="user" onClick={(e) => handleClick(e)} />
                 </Popover>
                 {text.nick}
             </div>
@@ -35,11 +40,21 @@ export const columns = [{
 }, {
     title: '操作',
     dataIndex: 'reply_status',
+    // onCell: (text, record) => {
+    //     return {
+    //         onClick: {
+    //             this.onChangeReplyStatus(record.class_info.id);
+    //         }
+    //     }
+    // },
     render: text => {
         if(text) {
+
             return <span>已回复</span>
         }else {
-            return <span>待回复&nbsp;<Icon type="mail" className="replyIcon" onClick={this.onChangeReplyStatus}/> </span>
+            return <span>待回复&nbsp;<Icon type="mail" className="replyIcon"/> </span>
         }
     }
 }];
+
+

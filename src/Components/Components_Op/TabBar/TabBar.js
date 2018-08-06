@@ -8,7 +8,7 @@ import { Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
 export default class TabBar extends Component {
     render() {
-        const { LearningCourse, HistoryData, router, SatisfiledList, Actions } = this.props;
+        const { currentLessonIds, historyLessonIds, lessonEntities, router, SatisfiledLessonTimes, entities, Actions } = this.props;
         return (
             <Tabs defaultActiveKey="1">
                 <TabPane tab="课程信息" key="1">
@@ -16,15 +16,18 @@ export default class TabBar extends Component {
                         router={router}
                     />
                     <Tables 
-                        LearningCourse={LearningCourse}
-                        HistoryData={HistoryData}
+                        currentLessonIds={currentLessonIds}
+                        historyLessonIds={historyLessonIds}
+                        lessonEntities={lessonEntities}
                         router={router}
                     />
                 </TabPane>
                 <TabPane tab="满意度反馈" key="2">
                     <SatisfiledButton />
                     <SatisfiledTable 
-                        SatisfiledList={SatisfiledList}
+                        // SatisfiledList={SatisfiledList}
+                        SatisfiledLessonTimes={SatisfiledLessonTimes}
+                        entities={entities}
                         Actions={Actions}
                     />
                 </TabPane>

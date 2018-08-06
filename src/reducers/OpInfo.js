@@ -9,23 +9,25 @@ export default function OpInfo(state=init_state, action) {
         }
         case ActionTypes.FETCH_LESSON_INFO_SUC: {
             const newState = {...state};
-            newState.LearningCourse = [...action.response.currentLessonsList];
-            newState.HistoryData = [...action.response.historyLessonsList];
+            newState.currentLessonIds = action.response.current.result;
+            newState.historyLessonIds = action.response.history.result;
+            newState.lessonEntities.entities = { ...action.response.current.entities.lesson, ...action.response.history.entities.lesson };
+            newState.lessonEntities.classes = { ...action.response.current.entities.classes, ...action.response.history.entities.classes };
+            newState.lessonEntities.teachers = { ...action.response.current.entities.teacher, ...action.response.history.entities.teacher };
             return newState;
         }
         case ActionTypes.FETCH_SATISFILED_INFO_SUC: {
             const newState = {...state};
-            newState.SatisfiledList = [...action.response.list];
+            const { SatisfiledInfo } = action.response;
+            newState.SatisfiledLessonTimes = SatisfiledInfo.result;
+            newState.entities.SatisfiledInfo = { ...SatisfiledInfo.entities.SatisfiledInfo};
+            newState.entities.classes = { ...SatisfiledInfo.entities.classes };
+            newState.entities.teachers = { ...SatisfiledInfo.entities.teacher};
             return newState;
         }
         case ActionTypes.CHANGEREPLYSTATUS: {
             const newState = {...state};
-            newState.SatisfiledList.filter(item => {
-                if(item.class_info.id === action.classId) {
-                    item.reply_status = !item.reply_status;
-                }
-            })
-            
+            newState.entities.SatisfiledInfo[action.classTime].reply_status = 1; //!newState.entities.SatisfiledInfo[action.classTime].reply_status;
             return newState;
         }
         case ActionTypes.FETCH_USER_INFO_FAI: {

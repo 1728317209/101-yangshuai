@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon, Popover } from 'antd';
 import './tables.css'
-import { Link } from 'react-router'
 
 function fun_render(text, type) {
     var num = null;
@@ -21,15 +20,18 @@ function fun_render(text, type) {
         return <span>{text}</span>
     }
 }
-const classId = 765765;
+function handleClick(e) {
+    e.stopPropagation();
+}
 export const columns = [{
     title: '班级',
     dataIndex: 'classInfo.name',
     render: text => {
         return (
-            <Link to={`classDetails/${classId}`}>
-                <Icon type="exclamation-circle" /> {text}
-            </Link>
+            <div>
+                <Icon type="exclamation-circle" /> 
+                {text}
+            </div>
         );
     }
 }, {
@@ -57,8 +59,8 @@ export const columns = [{
         )
         return (
             <div>
-                <Popover content={content}>{/* trigger="click" */}
-                    <Icon type="user" />
+                <Popover content={content} trigger="click" >
+                    <Icon type="user" onClick={(e) => handleClick(e)} />
                 </Popover>
                 {text.nick}
             </div>

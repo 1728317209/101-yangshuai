@@ -5,15 +5,21 @@ import { Table } from 'antd';
 
 export default class Tables extends Component {
     
+
+    list = (courseEntities, courseTimes) => courseTimes.map(time => {
+        return courseEntities[time]
+    })
+
     render() {
         const { ClassInfo } = this.props;
-        const { list } = ClassInfo;
+        const { coursesList } = ClassInfo;
+        const { courseEntities, courseTimes } = coursesList;
         const pagination = false;
         return (
             <div>
                 <Table className="classTable"
                     columns={columns}
-                    dataSource={list}
+                    dataSource={this.list(courseEntities, courseTimes)}
                     bordered
                     pagination={pagination}
                     rowKey={record => record.mid}

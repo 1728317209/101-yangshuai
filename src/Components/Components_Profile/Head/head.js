@@ -19,7 +19,7 @@ export default class Head extends Component {
     handleSelect = () => {
         const { selectByMid, selectByNick } = this.props;
         if(this.option === 'mid') {
-            selectByMid(this.inputVal);
+            selectByMid(parseInt(this.inputVal));
         }else if(this.option === 'nick') {
             selectByNick(this.inputVal);
         }

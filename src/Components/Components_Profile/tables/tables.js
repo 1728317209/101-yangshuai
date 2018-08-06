@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import { columns } from './columns';
 import { Table } from 'antd';
-import { Link } from 'react-router'
 import './tables.css';
 
 
 export default class Tables extends Component {
 
+    StudentsInfo = (StudentsMids, StudentsEntities) => StudentsMids.map(mid => {
+        return StudentsEntities[mid];
+    })
+    SelectedStudents = (SelectedMids, StudentsEntities) => SelectedMids.map(mid => {
+        return StudentsEntities[mid];
+    })
     render() {
         const { ProfileInfo, router } = this.props;
-        const { Students_Info, SelectResult } = ProfileInfo;
+        const { StudentsMids, StudentsEntities, SelectedMids } = ProfileInfo;
         const pagination = false;
-        if(!SelectResult.length) {
+        if(!SelectedMids.length) {
             return (
                 <div className="table-div">
                     <Table className="table-div"
                         columns={columns}
-                        dataSource={Students_Info}
+                        dataSource={this.StudentsInfo(StudentsMids, StudentsEntities)}
                         bordered
                         pagination={pagination}
-                        title={() => ''}
+                        // title={() => ''}
                         rowKey={record => record.mid}
-                        locale={'无'}
-                        // locale = { emptyText: '无'}
                         onRowClick={record => {
                             router.push({ pathname : `/op/${record.mid}`});
                         }}
@@ -32,13 +35,12 @@ export default class Tables extends Component {
         }else {
             return (
                 <div className="table-div">
-                {/* <Link to={`/op/${mid}`}> */}
                     <Table className="table-div"
                         columns={columns}
-                        dataSource={SelectResult}
+                        dataSource={this.SelectedStudents(SelectedMids, StudentsEntities)}
                         bordered
                         pagination={pagination}
-                        title={() => ''}
+                        // title={() => ''}
                         rowKey={record => record.mid}
                         onRowClick={record => {
                             router.push({ pathname : `/op/${record.mid}`});

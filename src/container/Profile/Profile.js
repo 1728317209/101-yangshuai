@@ -4,7 +4,7 @@ import Tables from '../../Components/Components_Profile/tables/tables';
 import { bindActionCreators } from 'redux';
 import * as HandleActions from '../../Actions/index';
 import { connect } from 'react-redux';
-
+import './Profile.css';
 
 class Profile extends Component {
 
@@ -17,7 +17,7 @@ class Profile extends Component {
     render() {
         const { ProfileInfo, Actions, router } = this.props;
         return (
-            <div>
+            <div className="profile">
                 <Head 
                     selectByMid={Actions.selectByMid} 
                     selectByNick={Actions.selectByNick}

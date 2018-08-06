@@ -5,15 +5,15 @@ import './tables.css';
 function fun_render(text) {
     if(text === 0) {
         return (
-            <Icon type="close" className="checkIcon"/>
+            <Icon type="close" style={{ color: 'red', fontWeight: 'bold'  }} className="checkIcon"/>
         );
     }else if(text === 1) {
         return (
-            <Icon type="check" className="checkIcon"/>
+            <Icon type="check" style={{ color: 'green', fontWeight: 'bold' }} className="checkIcon"/>
         );
     }else if(text === -1) {
         return (
-            <Icon type="minus" className="checkIcon"/>
+            <Icon type="minus" style={{ fontWeight: 'bold' }} className="checkIcon"/>
         );
     }
 }

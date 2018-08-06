@@ -17,12 +17,14 @@ class OP extends Component {
     render() {
         const { OpInfo, router, Actions } = this.props;
         return (
-            <div>
+            <div className="OP">
                 <Head Students_Info={OpInfo.Students_Info}/>
                 <TabBar 
-                    LearningCourse={OpInfo.LearningCourse}
-                    HistoryData={OpInfo.HistoryData}
-                    SatisfiledList={OpInfo.SatisfiledList}
+                    currentLessonIds={OpInfo.currentLessonIds}
+                    historyLessonIds={OpInfo.historyLessonIds}
+                    lessonEntities={OpInfo.lessonEntities}
+                    SatisfiledLessonTimes={OpInfo.SatisfiledLessonTimes}
+                    entities={OpInfo.entities}
                     Actions={Actions}
                     router={router}
                 />

@@ -17,7 +17,7 @@ class ClassDetails extends Component {
     render() {
         const { ClassInfo } = this.props;
         return (
-            <div >
+            <div className="ClassDetails">
                 <Head ClassInfo ={ ClassInfo } />
                 <Tables ClassInfo ={ ClassInfo }/>
             </div>
@@ -28,7 +28,7 @@ class ClassDetails extends Component {
 
 function mapStateToProps(state) {
     return { 
-        ClassInfo: state.ClassInfo,
+        ClassInfo: state.ClassInfo
     };
 }
 function mapDispatchToProps(dispatch) {
