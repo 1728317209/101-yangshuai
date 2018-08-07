@@ -12,6 +12,7 @@ import App from './App';
 import Profile from './container/Profile/Profile';
 import OP from './container/OP/OP';
 import ClassDetails from './container/ClassDetails/ClassDetails';
+import HomeworkReview from './container/HomeworkReview/homeworkReview';
 
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
@@ -40,7 +41,8 @@ const routes = [{
     childRoutes: [
         { path: 'profile', component: Profile },
         { path: 'op/:mid', component: OP },
-        { path: 'classDetails/:classId', component: ClassDetails }
+        { path: 'classDetails/:classId', component: ClassDetails },
+        { path: 'homework', component: HomeworkReview }
     ]
 }]
 

@@ -1,0 +1,12 @@
+.big-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.textArea {
+    flex: 9;
+}
+.button {
+    flex: 1;
+    padding-top: 10px;
+}

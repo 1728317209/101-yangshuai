@@ -1,0 +1,18 @@
+.left-right-Part {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(246, 246, 246)
+}
+.left-Part {
+    height: 350px;
+    width: 60%;
+    margin: 10px;
+}
+.right-Part {
+
+    height: 350px;
+    width: 40%;
+    margin: 10px;
+}

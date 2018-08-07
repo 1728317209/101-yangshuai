@@ -1,0 +1,16 @@
+.HomeworkInfo {
+    padding: 10px;
+    /* border: 1px solid #aaa; */
+    display: flex;
+    align-items: center;
+}
+.Homework-NO {
+    flex: 1;
+}
+.Homework-Img {
+    flex: 1;
+    /* padding: 15px; */
+}
+.Homework-div {
+    flex: 8;
+}

@@ -33,7 +33,14 @@ class OP extends Component {
 
 
 function mapStateToProps(state) {
-    const { Students_Info, currentLessonIds, historyLessonIds, lessonEntities, SatisfiledLessonTimes, satisfiledEntities } = state.OpInfo;
+    const { 
+        Students_Info, 
+        currentLessonIds, 
+        historyLessonIds, 
+        lessonEntities, 
+        SatisfiledLessonTimes, 
+        satisfiledEntities 
+    } = state.OpInfo;
     const { classes, teachers, entities } = lessonEntities;
     return { 
         currentLessons: currentLessonIds.map(id => {

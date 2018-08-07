@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {  Input, Button, Select } from 'antd';
-import './head2.css';
 
 export default class Head extends Component {
 
@@ -16,25 +15,25 @@ export default class Head extends Component {
     handleGetInput = (e) => {
         this.inputVal = e.target.value;
     }
-    handleSelect = () => {
-        const { selectByMid, selectByNick } = this.props;
-        if(this.option === 'mid') {
-            selectByMid(parseInt(this.inputVal, 10));
-        }else if(this.option === 'nick') {
-            selectByNick(this.inputVal);
-        }
-        
-    }
+    // handleSelect = () => {
+    //     const { selectByMid, selectByNick } = this.props;
+    //     if(this.option === 'mid') {
+    //         selectByMid(parseInt(this.inputVal, 10));
+    //     }else if(this.option === 'nick') {
+    //         selectByNick(this.inputVal);
+    //     }
+    // }
     render() {
 
         const Option = Select.Option;
+        const { HomeworkReviewInfo, MyWillReviewHomeworkIds } = this.props;
+        console.log('55555555555555555', HomeworkReviewInfo)
+        // const commentator = HomeworkReviewInfo[754].commentator;
         return (
             <div>
                 <div className="thishead">
-                    <div className="div-left">
-                        <Button>汇总</Button>
-                        <Button>摄影课</Button>
-                        <Button>绘画课</Button>
+                    <div>
+                        <span>{"commentator"}</span>
                     </div>
                     <div className="div-right">
                         <Select  className="Select" defaultValue="mid" onChange={this.handleSelectChange} style={{ width: 70 }}>

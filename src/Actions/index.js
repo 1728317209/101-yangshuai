@@ -84,6 +84,46 @@ export function fetchClassInfo(id) {
     }
 }
 
+/*
+token: 1， ；0或1， token   为0 表示获取全部作业，1，表示只读取当前老师的作业
+isReviewed: 1 ; 0或1，isReviewed为0表示读取未点评的作业， 1，表示读取已点评的作业
+*/
+export function fetchHomeworkInfo(token, isReviewed) {
+    let type = '';
+    if(token) {
+        if(isReviewed) {
+            //当前老师 已点评
+            type = ActionTypes.FETCH_MYREVIEWED_HOMEWORK_INFO;
+        }else {
+            //当前老师 未点评
+            type = ActionTypes.FETCH_MYWILLREVIEW_HOMEWORK_INFO;
+        }
+    }else {
+        if(isReviewed) {
+            //全部老师 已点评
+            type = ActionTypes.FETCH_ALLREVIEWED_HOMEWORK_INFO
+        }else {
+            //全部老师 未点评
+            type = ActionTypes.FETCH_ALLWILLREVIEW_HOMEWORK_INFO
+        }
+    }
+    return {
+        SERVER_API: {
+            type: type,
+            endpoint: '/getHomeWork',
+            params: {
+                token,
+                isReviewed
+            },
+            normalizeFuc: json => {
+                return {
+                    HomeworkReview: normalize(json, Schema.HomeworkReviewInfoSchema),
+                };
+            }
+        }
+    }
+}
+
 export function selectByMid(mid) {
     return {
         type: ActionTypes.SELECTBYMID,

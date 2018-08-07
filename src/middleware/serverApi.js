@@ -14,9 +14,10 @@ const callServerApi = (endpoint, params, normalizeFuc) => {
         }).then(res => {
             console.log('666666666666666666666666', res.data.data)
             if (res.data.ret === 1) {
-                // return resolve(normalizeFuc ? normalizeFuc(res.data.data) : res.data.data);
+                console.log('a')
                 return resolve(typeof(normalizeFuc) !== 'undefined' ? normalizeFuc(res.data.data) : res.data.data);
             }
+            console.log('b')
             return reject({ errMsg: res.data.errMsg });
         }).catch(err => {
             return reject({ errMsg: JSON.stringify(err) });

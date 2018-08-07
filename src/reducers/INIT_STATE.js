@@ -32,21 +32,18 @@ export const init_class_state = {
     }
 }
 
-
-// export const init_state = {
-//     Students_Info: {},
-//     currentLessonIds: [],
-//     historyLessonIds: [],
-//     // lessonEntities: {},
-//     lessonEntities: {
-//         teachers: {},
-//         classes: {},
-//         entities: {}
-//     },
-//     SatisfiledLessonTimes: [],
-//     entities: {
-//         teachers: {},
-//         classes: {},
-//         SatisfiledInfo: {}
-//     }
-// }
+export const init_homework_state = {
+    HomeworkIdx: {
+        MyWillReviewHomeworkIds: [],
+        MyReviewedHomeworkIds: [],
+        AllWillReviewHomeworkIds: [],
+        ALLReviewedHomeworkIds: [],
+    },
+    HomeworkEntities: {
+        HomeworkReviewInfo: {},
+        author: {},
+        classInfo: {},
+        commentsItem: {},
+        teacherInfo: {}
+    }
+}

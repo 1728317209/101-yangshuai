@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ButtonBox from '../ButtonBox/ButtonBox';
 import Tables from '../Tables/Tables';
-import SatisfiledButton from '../SatisfiledButton/Button';
 import SatisfiledTable from '../SatisfiledTable/Tables';
 import 'antd/dist/antd.css';
 import { Tabs } from 'antd';
@@ -22,7 +21,9 @@ export default class TabBar extends Component {
                     />
                 </TabPane>
                 <TabPane tab="满意度反馈" key="2">
-                    <SatisfiledButton />
+                    <ButtonBox                         
+                        router={router}
+                    />
                     <SatisfiledTable 
                         SatisfiledList={SatisfiledList}
                         Actions={Actions}
