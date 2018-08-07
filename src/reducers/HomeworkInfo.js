@@ -10,9 +10,29 @@ export default function HomeworkInfo(state=init_homework_state, action) {
                 ...state.HomeworkIdx.MyWillReviewHomeworkIds,
                 ...HomeworkReview.result
             ];
-            newState.HomeworkEntities = {
-                ...state.HomeworkEntities,
-                ...HomeworkReview.entities
+            // newState.HomeworkEntities = {
+            //     ...state.HomeworkEntities,
+            //     ...HomeworkReview.entities
+            // }
+            newState.HomeworkEntities.HomeworkReviewInfo = {
+                ...state.HomeworkEntities.HomeworkReviewInfo,
+                ...HomeworkReview.entities.HomeworkReviewInfo
+            }
+            newState.HomeworkEntities.author = {
+                ...state.HomeworkEntities.author,
+                ...HomeworkReview.entities.author
+            }
+            newState.HomeworkEntities.classInfo = {
+                ...state.HomeworkEntities.classInfo,
+                ...HomeworkReview.entities.classInfo
+            }
+            newState.HomeworkEntities.commentsItem = {
+                ...state.HomeworkEntities.commentsItem,
+                ...HomeworkReview.entities.commentsItem
+            }
+            newState.HomeworkEntities.teacherInfo = {
+                ...state.HomeworkEntities.teacherInfo,
+                ...HomeworkReview.entities.teacherInfo
             }
             return newState;
         }
@@ -24,9 +44,25 @@ export default function HomeworkInfo(state=init_homework_state, action) {
                 ...state.HomeworkIdx.AllWillReviewHomeworkIds,
                 ...HomeworkReview.result
             ];
-            newState.HomeworkEntities = {
-                ...state.HomeworkEntities,
-                ...HomeworkReview.entities
+            newState.HomeworkEntities.HomeworkReviewInfo = {
+                ...state.HomeworkEntities.HomeworkReviewInfo,
+                ...HomeworkReview.entities.HomeworkReviewInfo
+            }
+            newState.HomeworkEntities.author = {
+                ...state.HomeworkEntities.author,
+                ...HomeworkReview.entities.author
+            }
+            newState.HomeworkEntities.classInfo = {
+                ...state.HomeworkEntities.classInfo,
+                ...HomeworkReview.entities.classInfo
+            }
+            newState.HomeworkEntities.commentsItem = {
+                ...state.HomeworkEntities.commentsItem,
+                ...HomeworkReview.entities.commentsItem
+            }
+            newState.HomeworkEntities.teacherInfo = {
+                ...state.HomeworkEntities.teacherInfo,
+                ...HomeworkReview.entities.teacherInfo
             }
             return newState;
         }
@@ -38,9 +74,25 @@ export default function HomeworkInfo(state=init_homework_state, action) {
                 ...state.HomeworkIdx.MyReviewedHomeworkIds,
                 ...HomeworkReview.result
             ];
-            newState.HomeworkEntities = {
-                ...state.HomeworkEntities,
-                ...HomeworkReview.entities
+            newState.HomeworkEntities.HomeworkReviewInfo = {
+                ...state.HomeworkEntities.HomeworkReviewInfo,
+                ...HomeworkReview.entities.HomeworkReviewInfo
+            }
+            newState.HomeworkEntities.author = {
+                ...state.HomeworkEntities.author,
+                ...HomeworkReview.entities.author
+            }
+            newState.HomeworkEntities.classInfo = {
+                ...state.HomeworkEntities.classInfo,
+                ...HomeworkReview.entities.classInfo
+            }
+            newState.HomeworkEntities.commentsItem = {
+                ...state.HomeworkEntities.commentsItem,
+                ...HomeworkReview.entities.commentsItem
+            }
+            newState.HomeworkEntities.teacherInfo = {
+                ...state.HomeworkEntities.teacherInfo,
+                ...HomeworkReview.entities.teacherInfo
             }
             return newState;
         }
@@ -52,9 +104,25 @@ export default function HomeworkInfo(state=init_homework_state, action) {
                 ...state.HomeworkIdx.ALLReviewedHomeworkIds,
                 ...HomeworkReview.result
             ];
-            newState.HomeworkEntities = {
-                ...state.HomeworkEntities,
-                ...HomeworkReview.entities
+            newState.HomeworkEntities.HomeworkReviewInfo = {
+                ...state.HomeworkEntities.HomeworkReviewInfo,
+                ...HomeworkReview.entities.HomeworkReviewInfo
+            }
+            newState.HomeworkEntities.author = {
+                ...state.HomeworkEntities.author,
+                ...HomeworkReview.entities.author
+            }
+            newState.HomeworkEntities.classInfo = {
+                ...state.HomeworkEntities.classInfo,
+                ...HomeworkReview.entities.classInfo
+            }
+            newState.HomeworkEntities.commentsItem = {
+                ...state.HomeworkEntities.commentsItem,
+                ...HomeworkReview.entities.commentsItem
+            }
+            newState.HomeworkEntities.teacherInfo = {
+                ...state.HomeworkEntities.teacherInfo,
+                ...HomeworkReview.entities.teacherInfo
             }
             return newState;
         }

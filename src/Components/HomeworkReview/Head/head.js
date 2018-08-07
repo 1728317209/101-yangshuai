@@ -26,7 +26,7 @@ export default class Head extends Component {
     render() {
 
         const Option = Select.Option;
-        const { HomeworkReviewInfo, MyWillReviewHomeworkIds } = this.props;
+        const { HomeworkReviewInfo } = this.props;
         console.log('55555555555555555', HomeworkReviewInfo)
         // const commentator = HomeworkReviewInfo[754].commentator;
         return (
