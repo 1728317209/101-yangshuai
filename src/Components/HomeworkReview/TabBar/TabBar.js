@@ -12,34 +12,38 @@ import './index.css';
 const TabPane = Tabs.TabPane;
 export default class TabBar extends Component {
 
-    renderItems = (HomeworkIdx, HomeworkEntities) => HomeworkIdx.map( id => {
-        const { author, classInfo, teacherInfo} = HomeworkEntities.HomeworkReviewInfo[id];
-        const commentIds = HomeworkEntities.HomeworkReviewInfo[id].comments;
-        const comments = commentIds.map(id => {
-            return HomeworkEntities.commentsItem[id];
-        })
-        return (
-            <div className="left-right-Part">
-                <div className="left-Part">
-                    <ImgView 
-                        photos={HomeworkEntities.HomeworkReviewInfo[id].photos}
-                    />
-                    <HomeworkInfo 
-                        HomeworkReviewInfo={HomeworkEntities.HomeworkReviewInfo[id]}
-                        author={HomeworkEntities.author[author]}
-                        classInfo={HomeworkEntities.classInfo[classInfo]}
-                        teacherInfo={HomeworkEntities.teacherInfo[teacherInfo]}
-                    />
-                    <ReviewArea />
-                </div>
-                <div className="right-Part">
-                    <ReviewList 
-                        comments={comments}
-                    />
-                </div>
-            </div>
-        )
-    })
+    renderItems = (HomeworkIdx, HomeworkEntities) => {
+        if(HomeworkIdx.length){
+            return HomeworkIdx.map( id => {
+                const { author, classInfo, teacherInfo} = HomeworkEntities.HomeworkReviewInfo[id];
+                const commentIds = HomeworkEntities.HomeworkReviewInfo[id].comments;
+                const comments = commentIds.map(id => {
+                    return HomeworkEntities.commentsItem[id];
+                })
+                return (
+                    <div className="left-right-Part">
+                        <div className="left-Part">
+                            <ImgView 
+                                photos={HomeworkEntities.HomeworkReviewInfo[id].photos}
+                            />
+                            <HomeworkInfo 
+                                HomeworkReviewInfo={HomeworkEntities.HomeworkReviewInfo[id]}
+                                author={HomeworkEntities.author[author]}
+                                classInfo={HomeworkEntities.classInfo[classInfo]}
+                                teacherInfo={HomeworkEntities.teacherInfo[teacherInfo]}
+                            />
+                            <ReviewArea />
+                        </div>
+                        <div className="right-Part">
+                            <ReviewList 
+                                comments={comments}
+                            />
+                        </div>
+                    </div>
+                )
+            })
+        }
+    }
 
 
     render() {
@@ -82,12 +86,12 @@ export default class TabBar extends Component {
                 </TabPane>
                 <TabPane tab="全部未点评" key="4">
                     {
-                        // this.renderItems(AllWillReviewHomeworkIds, HomeworkEntities)
+                        this.renderItems(AllWillReviewHomeworkIds, HomeworkEntities)
                     }
                 </TabPane>
                 <TabPane tab="全部已点评" key="5">
                     {
-                        // this.renderItems(ALLReviewedHomeworkIds, HomeworkEntities)
+                        this.renderItems(ALLReviewedHomeworkIds, HomeworkEntities)
                     }
                 </TabPane>
             </Tabs>
