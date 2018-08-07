@@ -10,10 +10,6 @@ export default function HomeworkInfo(state=init_homework_state, action) {
                 ...state.HomeworkIdx.MyWillReviewHomeworkIds,
                 ...HomeworkReview.result
             ];
-            // newState.HomeworkEntities = {
-            //     ...state.HomeworkEntities,
-            //     ...HomeworkReview.entities
-            // }
             newState.HomeworkEntities.HomeworkReviewInfo = {
                 ...state.HomeworkEntities.HomeworkReviewInfo,
                 ...HomeworkReview.entities.HomeworkReviewInfo

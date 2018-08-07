@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  Input, Button, Select } from 'antd';
-
+import './index.css';
 export default class Head extends Component {
 
     constructor(props) {
@@ -26,14 +26,16 @@ export default class Head extends Component {
     render() {
 
         const Option = Select.Option;
-        const { HomeworkReviewInfo } = this.props;
-        console.log('55555555555555555', HomeworkReviewInfo)
-        // const commentator = HomeworkReviewInfo[754].commentator;
+        const { HomeworkReviewInfo, MyWillReviewHomeworkIds } = this.props;
+        let commentator = '';
+        if(Object.keys(HomeworkReviewInfo).length && MyWillReviewHomeworkIds.length) {
+            commentator = HomeworkReviewInfo[MyWillReviewHomeworkIds[0]].commentator;
+        }
         return (
             <div>
-                <div className="thishead">
+                <div className="homeworkHead">
                     <div>
-                        <span>{"commentator"}</span>
+                        <span>{commentator}</span>
                     </div>
                     <div className="div-right">
                         <Select  className="Select" defaultValue="mid" onChange={this.handleSelectChange} style={{ width: 70 }}>

@@ -2,17 +2,23 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    margin: 10px;
-    background-color: rgb(246, 246, 246)
+    margin: 5px;
 }
 .left-Part {
-    height: 350px;
+    /* height: 350px; */
     width: 60%;
-    margin: 10px;
+    margin: 5px;
+    padding: 15px;
+    background-color: rgb(246, 246, 246);
 }
 .right-Part {
-
-    height: 350px;
+    background-color: rgb(246, 246, 246);
+    padding: 15px;
+    /* height: 350px; */
     width: 40%;
-    margin: 10px;
+    margin: 5px;
+}
+.Tabs {
+    padding-left: 20px;
+    padding-right: 20px;
 }

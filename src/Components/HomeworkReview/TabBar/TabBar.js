@@ -70,7 +70,7 @@ export default class TabBar extends Component {
             ALLReviewedHomeworkIds
         )
         return (
-            <Tabs defaultActiveKey="1">
+            <Tabs className="Tabs" defaultActiveKey="1">
                 <TabPane tab="我的未点评" key="1">
                     {
                         this.renderItems(MyWillReviewHomeworkIds, HomeworkEntities)

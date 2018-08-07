@@ -58,13 +58,13 @@ export default class InfiniteListExample extends Component {
         if(comment.status==="unrevised") {
             return (
                 <div>
-                    <Button size="small">退回</Button>
+                    <Button className="Button" size="small">退回</Button>
                 </div>
             )
         }else if (comment.status==="reject") {
             return (
                 <div>
-                    <span>{`消息被退回  退回原因：${comment.reason}`}</span>
+                    <span className="reject">{`消息被退回  退回原因：${comment.reason}`}</span>
                 </div>
             )
         }
@@ -74,9 +74,9 @@ export default class InfiniteListExample extends Component {
         const data = comments.map(comment => {
             if(comment.mid) {
                 return (
-                    <div>
-                        <div>
-                            <span>{`${comment.nick} MID:${comment.mid}   `}</span>
+                    <div className="top-div">
+                        <div className="div">
+                            <span className="nick">{`${comment.nick} MID:${comment.mid}   `}</span>
                             <span className="time">{`${comment.time}`}</span>
                         </div>
                         <div>
@@ -86,9 +86,9 @@ export default class InfiniteListExample extends Component {
                 )
             }else {
                 return (
-                    <div>
-                        <div>
-                            <span>{`${comment.nick} (${comment.commentator.role} ${comment.commentator.nick})`}</span>
+                    <div className="top-div">
+                        <div className="div">
+                            <span className="nick">{`${comment.nick} (${comment.commentator.role} ${comment.commentator.nick})`}</span>
                             <span className="time">{`${comment.time}`}</span>
                         </div>
                         <div>

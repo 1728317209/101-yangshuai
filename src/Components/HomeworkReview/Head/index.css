@@ -1,0 +1,9 @@
+.homeworkHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    margin-bottom: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

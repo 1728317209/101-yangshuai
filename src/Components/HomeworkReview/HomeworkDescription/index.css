@@ -1,14 +1,16 @@
 .HomeworkInfo {
-    padding: 10px;
+    padding: 15px;
     /* border: 1px solid #aaa; */
     display: flex;
     align-items: center;
 }
 .Homework-NO {
-    flex: 1;
+    /* flex: 1; */
+    padding: 5px;
 }
 .Homework-Img {
-    flex: 1;
+    /* flex: 1; */
+    padding: 5px;
     /* padding: 15px; */
 }
 .Homework-div {

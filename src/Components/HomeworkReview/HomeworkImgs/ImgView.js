@@ -12,7 +12,7 @@ export default class ImgView extends Component {
                 <Carousel autoplay>
                     {
                         photos.map(src => {
-                            return <div><img src={src} alt="" /></div>
+                            return <div><img className="img" src={src} alt="" /></div>
                         })
                     }
                 </Carousel>

@@ -11,7 +11,26 @@
     width: 100%;
     text-align: center;
 }
+.top-div {
+    width: 100%;
+}
+.div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 .time {
     /* display: block; */
+    /* float: right; */
+    display: flex;
+    flex-direction: row-reverse;
+}
+.nick {
+    display: block;
+}
+.reject {
+    color: red;
+}
+.Button {
     float: right;
 }
