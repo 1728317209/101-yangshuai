@@ -11,8 +11,8 @@ export default class ImgView extends Component {
             <div>
                 <Carousel autoplay>
                     {
-                        photos.map(src => {
-                            return <div><img className="img" src={src} alt="" /></div>
+                        photos.map((src, idx) => {
+                            return <div key={idx}><img className="img" src={src} alt="" /></div>
                         })
                     }
                 </Carousel>

@@ -26,10 +26,10 @@ export default class Head extends Component {
     render() {
 
         const Option = Select.Option;
-        const { HomeworkReviewInfo, MyWillReviewHomeworkIds } = this.props;
+        const { MyWillReviewHomeworkInfo } = this.props;
         let commentator = '';
-        if(Object.keys(HomeworkReviewInfo).length && MyWillReviewHomeworkIds.length) {
-            commentator = HomeworkReviewInfo[MyWillReviewHomeworkIds[0]].commentator;
+        if(MyWillReviewHomeworkInfo.length) {
+            commentator = MyWillReviewHomeworkInfo[0].commentator;
         }
         return (
             <div>

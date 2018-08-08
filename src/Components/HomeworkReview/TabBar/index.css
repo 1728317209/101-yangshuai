@@ -5,16 +5,14 @@
     margin: 5px;
 }
 .left-Part {
-    /* height: 350px; */
     width: 60%;
     margin: 5px;
     padding: 15px;
-    background-color: rgb(246, 246, 246);
+    background-color: rgb(250, 250, 250);
 }
 .right-Part {
-    background-color: rgb(246, 246, 246);
+    background-color: rgb(250, 250, 250);
     padding: 15px;
-    /* height: 350px; */
     width: 40%;
     margin: 5px;
 }

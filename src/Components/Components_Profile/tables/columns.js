@@ -5,7 +5,7 @@ export const columns = [{
     title: '',
     dataIndex: 'hurl',
     render: info => {
-        return <span>{<img className="img" src={info} alt=''/> || '无'}</span>
+        return <span>{<img className="myImg" src={info} alt=''/> || '无'}</span>
     }
 }, {
     title: '学员名',

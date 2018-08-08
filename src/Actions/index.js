@@ -144,3 +144,28 @@ export function handleChangeReplyStatus(classTime) {
         classTime
     }
 }
+
+export function handleChangeCommentStatus(commentId, reason) {
+    return {
+        type:ActionTypes.CHANGECOMMENTSTATUS,
+        commentId,
+        reason
+    }
+}
+
+export function handleSendReviewComments(homeworkId, content, time, TabKey) {
+    return {
+        type:ActionTypes.SENDREVIEWCOMMENTS,
+        homeworkId, 
+        content, 
+        time,
+        TabKey
+    }
+}
+
+export function handleChangeIsExcellent(homeworkId) {
+    return {
+        type:ActionTypes.CHANGE_ISEXCELLENT,
+        homeworkId
+    }
+}

@@ -8,5 +8,5 @@ export default combineReducers({
     OpInfo,
     ProfileInfo,
     ClassInfo,
-    HomeworkInfo
+    HomeworkInfo,
 });

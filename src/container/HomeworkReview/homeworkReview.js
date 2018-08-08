@@ -17,35 +17,50 @@ class HomeworkReview extends Component {
 
     render() {
         const { 
-            MyWillReviewHomeworkIds,
-            MyReviewedHomeworkIds,
-            AllWillReviewHomeworkIds,
-            ALLReviewedHomeworkIds,
-            HomeworkReviewInfo,
-            author,
-            classInfo,
-            commentsItem,
-            teacherInfo,
-            HomeworkIdx,
-            HomeworkEntities
+            MyWillReviewHomeworkInfo,
+            MyReviewedHomeworkInfo,
+            AllWillReviewHomeworkInfo,
+            ALLReviewedHomeworkInfo,
+            Actions
         } = this.props;
         return (
             <div>
                 <Head 
-                    MyWillReviewHomeworkIds={MyWillReviewHomeworkIds}
-                    HomeworkReviewInfo={HomeworkReviewInfo} 
+                    MyWillReviewHomeworkInfo={MyWillReviewHomeworkInfo}
                 />
                 <TabBar 
-                    HomeworkIdx={HomeworkIdx}
-                    HomeworkEntities={HomeworkEntities}
+                    MyWillReviewHomeworkInfo={MyWillReviewHomeworkInfo}
+                    MyReviewedHomeworkInfo={MyReviewedHomeworkInfo}
+                    AllWillReviewHomeworkInfo={AllWillReviewHomeworkInfo}
+                    ALLReviewedHomeworkInfo={ALLReviewedHomeworkInfo}
+                    Actions={Actions}
                 />
             </div>
         );
     }
 }
 
+const mapComments = (comments, commentsItem) => comments.map(commentId => {
+    return commentsItem[commentId]
+})
+const mapEntities = (ids, entities) => ids.map(id => {
+    const { 
+        HomeworkReviewInfo, 
+        author,
+        classInfo,
+        commentsItem,
+        teacherInfo
+    } = entities;
+    return {
+        ...HomeworkReviewInfo[id],
+        author: author[HomeworkReviewInfo[id].author],
+        classInfo: classInfo[HomeworkReviewInfo[id].classInfo],
+        teacherInfo: teacherInfo[HomeworkReviewInfo[id].teacherInfo],
+        comments: mapComments(HomeworkReviewInfo[id].comments, commentsItem)
+    }
+})
+
 function mapStateToProps(state) {
-    console.log('333333333333333333333333', state.HomeworkInfo)
     const { HomeworkInfo } = state;
     const { HomeworkIdx, HomeworkEntities } = HomeworkInfo;
     const { 
@@ -54,26 +69,12 @@ function mapStateToProps(state) {
         AllWillReviewHomeworkIds,
         ALLReviewedHomeworkIds
     } = HomeworkIdx;
-    const { 
-        HomeworkReviewInfo, 
-        author,
-        classInfo,
-        commentsItem,
-        teacherInfo
-    } = HomeworkEntities;
 
     return { 
-        MyWillReviewHomeworkIds,
-        MyReviewedHomeworkIds,
-        AllWillReviewHomeworkIds,
-        ALLReviewedHomeworkIds,
-        HomeworkReviewInfo,
-        author,
-        classInfo,
-        commentsItem,
-        teacherInfo,
-        HomeworkIdx,
-        HomeworkEntities
+        MyWillReviewHomeworkInfo: mapEntities(MyWillReviewHomeworkIds, HomeworkEntities),
+        MyReviewedHomeworkInfo: mapEntities(MyReviewedHomeworkIds, HomeworkEntities),
+        AllWillReviewHomeworkInfo: mapEntities(AllWillReviewHomeworkIds, HomeworkEntities),
+        ALLReviewedHomeworkInfo: mapEntities(ALLReviewedHomeworkIds, HomeworkEntities)
     };
 }
 function mapDispatchToProps(dispatch) {
