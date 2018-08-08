@@ -8,13 +8,6 @@ export default class Head extends Component {
         console.log(`switch to ${homeworkId}`);
         Actions.handleChangeIsExcellent(homeworkId);
     }
-    renderSwitch = (status, homeworkId) => {
-        if(status){
-            return <Switch defaultChecked={true} onChange={() => {this.onChange(homeworkId)}} />
-        }else {
-            return <Switch defaultChecked={false} onChange={() => {this.onChange(homeworkId)}} />
-        }
-    }
     render() {
         const { thisHomeworkInfo } = this.props;
         const { author, classInfo, teacherInfo } = thisHomeworkInfo;
@@ -39,9 +32,8 @@ export default class Head extends Component {
                     </div>
                 </div>
                 <div>
-                    {/* <Switch defaultChecked onChange={() => {this.onChange(thisHomeworkInfo.id)}} /> */}
                     {
-                        this.renderSwitch(thisHomeworkInfo.isExcellent, thisHomeworkInfo.id)
+                        <Switch checked={thisHomeworkInfo.isExcellent} onChange={() => {this.onChange(thisHomeworkInfo.id)}} />
                     }
                 </div>
             </div>
