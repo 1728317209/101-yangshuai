@@ -42,6 +42,8 @@ export default function HomeworkInfo(state=init_homework_state, action) {
                     ];
                     break;
                 }
+                default:
+                    break;
             }
             newState.HomeworkEntities.HomeworkReviewInfo = {
                 ...state.HomeworkEntities.HomeworkReviewInfo,

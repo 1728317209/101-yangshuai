@@ -10,9 +10,9 @@ export default class Head extends Component {
     }
     renderSwitch = (status, homeworkId) => {
         if(status){
-            return <Switch defaultChecked='true' onChange={() => {this.onChange(homeworkId)}} />
+            return <Switch defaultChecked={true} onChange={() => {this.onChange(homeworkId)}} />
         }else {
-            return <Switch defaultChecked='false' onChange={() => {this.onChange(homeworkId)}} />
+            return <Switch defaultChecked={false} onChange={() => {this.onChange(homeworkId)}} />
         }
     }
     render() {
