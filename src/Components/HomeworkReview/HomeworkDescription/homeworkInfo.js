@@ -8,11 +8,11 @@ export default class Head extends Component {
         console.log(`switch to ${homeworkId}`);
         Actions.handleChangeIsExcellent(homeworkId);
     }
-    renderSwitch = (status) => {
+    renderSwitch = (status, homeworkId) => {
         if(status){
-            return <Switch defaultChecked='true' onChange={() => {this.onChange()}} />
+            return <Switch defaultChecked='true' onChange={() => {this.onChange(homeworkId)}} />
         }else {
-            return <Switch defaultChecked='false' onChange={() => {this.onChange()}} />
+            return <Switch defaultChecked='false' onChange={() => {this.onChange(homeworkId)}} />
         }
     }
     render() {
@@ -39,11 +39,10 @@ export default class Head extends Component {
                     </div>
                 </div>
                 <div>
-                    <Switch defaultChecked onChange={() => {this.onChange(thisHomeworkInfo.id)}} />
-                    {/* {
-                        this.renderSwitch(thisHomeworkInfo.isExcellent)
-                        
-                    } */}
+                    {/* <Switch defaultChecked onChange={() => {this.onChange(thisHomeworkInfo.id)}} /> */}
+                    {
+                        this.renderSwitch(thisHomeworkInfo.isExcellent, thisHomeworkInfo.id)
+                    }
                 </div>
             </div>
         );
