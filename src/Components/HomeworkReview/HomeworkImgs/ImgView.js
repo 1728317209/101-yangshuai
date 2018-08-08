@@ -5,24 +5,20 @@ import { Carousel } from 'antd';
 
 export default class ImgView extends Component {
 
-    onChange = (a, b, c) => {
-        console.log('...............', a, b, c);
-    }
-    
     render() {
         const { photos } = this.props;
+        console.log('...............', Carousel.slickPrev);
         return (
             <div>
-                {/* <div>123</div> */}
-                <Carousel autoplay>
+                <Carousel autoplay arrows={true}>
                     {
                         photos.map((src, idx) => {
                             return <div key={idx}><img className="img" src={src} alt="" /></div>
                         })
                     }
                 </Carousel>
-                {/* <div>456</div> */}
             </div>
         );
     }
 }
+

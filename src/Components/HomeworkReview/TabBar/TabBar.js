@@ -78,4 +78,3 @@ export default class TabBar extends Component {
         );
     }
 }
-

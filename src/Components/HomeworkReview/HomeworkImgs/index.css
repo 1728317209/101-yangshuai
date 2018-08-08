@@ -5,7 +5,20 @@
     /* background: #364d79; */
     overflow: hidden;
 }
-
+.ant-carousel .slick-prev {
+    left: 0px;
+    border: 1px solid rgb(133, 130, 130);
+    border-right: 20px solid #838181;;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+.ant-carousel .slick-next {
+    right: 0px;
+    border: 1px solid rgb(133, 130, 130);
+    border-left: 20px solid #838181;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
 .ant-carousel .slick-slide h3 {
     color: #fff;
 }
