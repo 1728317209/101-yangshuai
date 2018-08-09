@@ -8,9 +8,9 @@ export default class Tables extends Component {
 
     render() {
         const { router } = this.props;
-        const { StudentsInfo, SelectedStudents, SelectedMids} = this.props;
+        const { StudentsInfo, SelectedStudents, SelectedMids } = this.props;
         const pagination = false;
-        if(!SelectedMids.length) {
+        if (!SelectedMids.length) {
             return (
                 <div className="table-div">
                     <Table className="table-div"
@@ -20,12 +20,12 @@ export default class Tables extends Component {
                         pagination={pagination}
                         rowKey={record => record.mid}
                         onRowClick={record => {
-                            router.push({ pathname : `/op/${record.mid}`});
+                            router.push({ pathname: `/op/${record.mid}` });
                         }}
                     />
                 </div>
             );
-        }else {
+        } else {
             return (
                 <div className="table-div">
                     <Table className="table-div"
@@ -35,7 +35,7 @@ export default class Tables extends Component {
                         pagination={pagination}
                         rowKey={record => record.mid}
                         onRowClick={record => {
-                            router.push({ pathname : `/op/${record.mid}`});
+                            router.push({ pathname: `/op/${record.mid}` });
                         }}
                     />
                 </div>

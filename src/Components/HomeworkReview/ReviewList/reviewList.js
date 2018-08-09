@@ -1,15 +1,48 @@
 import React, { Component } from 'react';
-import { List, Spin, Button } from 'antd';
+import { List, Spin, Button, Modal, Input } from 'antd';
 // import reqwest from 'reqwest';
 import './index.css';
 import InfiniteScroll from 'react-infinite-scroller';
 import './index.css';
 // const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
+const { TextArea } = Input;
 
 export default class InfiniteListExample extends Component {
     state = {
         loading: false,
         hasMore: true,
+        visible: false,
+        commentId: null,
+        reason: ''
+    }
+
+    showModal = (commentId) => {
+        this.setState({
+            visible: true,
+            commentId: commentId
+        });
+    }
+
+    handleOk = (e) => {
+        console.log(e);
+        const { Actions } = this.props;
+        if(this.state.reason) {
+            Actions.handleChangeCommentStatus(this.state.commentId, this.state.reason)
+            this.setState({ 
+                visible: false, 
+                reason: null 
+            });
+        }else {
+            alert('Please Input Something, OK?')
+        }
+    }
+
+    handleCancel = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+            reason: null
+        });
     }
 
     handleInfiniteOnLoad = () => {
@@ -18,17 +51,29 @@ export default class InfiniteListExample extends Component {
             loading: false,
         });
     }
-    handleReject = (commentId) => {
-        const { Actions } = this.props;
-        const reason = '太简单';
-        Actions.handleChangeCommentStatus(commentId, reason)
+
+    handleReviewChange = (e) => {
+        this.setState ({
+            reason: e.target.value
+        });
     }
+
     isReject = (comment) => {
         if (comment.status === "unrevised") {
             return (
                 <div>
-                    {/* <Button className="Button" size="small" onClick={() => this.handleReject(comment.id)}>退回</Button> */}
-                    <Button className="Button" type='reset' size="small" onClick={this.handleReject.bind(this, comment.id)}>退回</Button>
+                    <Button type="primary" onClick={this.showModal.bind(this, comment.id)} className="Button">退回</Button>
+                    <Modal
+                        title='退回原因：'
+                        visible={this.state.visible}
+                        onOk={this.handleOk}
+                        onCancel={this.handleCancel}
+                        closable={false}
+                        okText='退回'
+                        cancelText='取消'
+                    >
+                    <TextArea autosize={true} value={this.state.reason} onChange={this.handleReviewChange}/>
+                    </Modal>
                 </div>
             )
         } else if (comment.status === "reject") {
@@ -79,7 +124,7 @@ export default class InfiniteListExample extends Component {
         })
 
         return (
-            <div className="demo-infinite-container">
+            <div className="demo-infinite-container" ref='Drawer'>
                 <InfiniteScroll
                     initialLoad={false}
                     pageStart={0}

@@ -5,24 +5,31 @@
     /* background: #364d79; */
     overflow: hidden;
 }
+.Img-div {
+    position: relative;
+    z-index: 1;
+}
 .ant-carousel .slick-prev {
-    left: 0px;
-    border: 1px solid rgb(133, 130, 130);
-    border-right: 20px solid #838181;;
+    left: 10px;
+    position: absolute;
+    z-index: 2;
+    border: 1px solid #d9d9d9;
+    border-right: 20px solid #d9d9d9;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
 .ant-carousel .slick-next {
-    right: 0px;
-    border: 1px solid rgb(133, 130, 130);
-    border-left: 20px solid #838181;
+    right: 10px;
+    position: absolute;
+    z-index: 2;
+    border: 1px solid #d9d9d9;
+    border-left: 20px solid #d9d9d9;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
 .ant-carousel .slick-slide h3 {
     color: #fff;
 }
-
 .img {
     margin: 0 auto;
     height: 200px;

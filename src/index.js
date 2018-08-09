@@ -13,7 +13,9 @@ import Profile from './container/Profile/Profile';
 import OP from './container/OP/OP';
 import ClassDetails from './container/ClassDetails/ClassDetails';
 import HomeworkReview from './container/HomeworkReview/homeworkReview';
-
+import ActionSheet from './container/Demo/ActionSheet/ActionSheetDemo';
+import Dialog from './container/Demo/Dialog/DialogDemo';
+import Switch from './container/Demo/Switch/switchDemo';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -42,7 +44,10 @@ const routes = [{
         { path: 'profile', component: Profile },
         { path: 'op/:mid', component: OP },
         { path: 'classDetails/:classId', component: ClassDetails },
-        { path: 'homework', component: HomeworkReview }
+        { path: 'homework', component: HomeworkReview },
+        { path: 'actionSheet', component: ActionSheet },
+        { path: 'dialog', component: Dialog },
+        { path: 'switch', component: Switch }
     ]
 }]
 

@@ -33,4 +33,7 @@
 }
 .Button {
     float: right;
+    width: 45px;
+    height: 23px;
+    padding: 0;
 }

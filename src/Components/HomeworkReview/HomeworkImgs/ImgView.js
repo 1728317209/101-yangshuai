@@ -9,7 +9,7 @@ export default class ImgView extends Component {
         const { photos } = this.props;
         console.log('...............', Carousel.slickPrev);
         return (
-            <div>
+            <div className="Img-div">
                 <Carousel autoplay arrows={true}>
                     {
                         photos.map((src, idx) => {
