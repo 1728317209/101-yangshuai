@@ -4,10 +4,10 @@ import './demo.css'
 export default class Demo extends Component {
     state = {
         isActive: false,   
-        title: '',      
+        title: '这是一个标题',      
         renderBody: '',
-        okText: '',    
-        cancelText: '',
+        okText: '确定',    
+        cancelText: '取消',
         onOk: '',       
         onCancel: '',   
     }

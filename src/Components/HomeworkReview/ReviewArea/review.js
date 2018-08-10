@@ -1,44 +1,59 @@
 import React, { Component } from 'react';
-import { Input, Button } from 'antd';
+import { Button, Mention } from 'antd';
 import './index.css';
-const { TextArea } = Input;
+const { toString, toContentState } = Mention;
 
 export default class Text extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            value: '',
+            suggestions: []
         };
     }
 
-    handleChange = (e) => {
-        this.setState ({
-            value: e.target.value
+    handleChange = (editorState) => {
+        console.log(toString(editorState))
+        this.setState({
+            value: toString(editorState)
         });
     }
 
-    handleClick = (e) => {
-        if(this.content) {
-            const { Actions, homeworkId, TabKey } = this.props;
-            const time = Date.parse(new Date())/1000;
-            Actions.handleSendReviewComments(homeworkId, this.state.value, time, TabKey)
-            this.content = '';
-            this.setState ({
-                value: ''
-            });
-        }else {
-            alert('NO REVIEW!')
-        }
-        
+    onSelect = (suggestion) => {
+    this.setState({
+        suggestion: suggestion
+    });
+}
+
+handleClick = () => {
+    if (this.state.value) {
+        const { Actions, homeworkId, TabKey } = this.props;
+        const time = Date.parse(new Date()) / 1000;
+        Actions.handleSendReviewComments(homeworkId, this.state.value, time, TabKey)
+        this.setState({
+            value: ''
+        });
+    } else {
+        alert('NO REVIEW!')
     }
+}
 
     render() {
+        const { comments } = this.props;
+        const contents = comments.map(comment => comment.content)
+
         return (
             <div className="big-div">
-                <div className="textArea">
-                    <TextArea autosize={true} value={this.state.value} onChange={this.handleChange}/>
-                </div>
+                <Mention
+                    style={{ width: '100%' }}
+                    onChange={this.handleChange}
+                    defaultValue={toContentState('')}
+                    suggestions={contents}
+                    prefix=''
+                    onSelect={this.onSelect}
+                    // value={this.state.value}
+                />
                 <div className="button">
                     <Button onClick={this.handleClick}>发送</Button>
                 </div>

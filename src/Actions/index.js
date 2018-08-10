@@ -166,6 +166,6 @@ export function handleSendReviewComments(homeworkId, content, time, TabKey) {
 export function handleChangeIsExcellent(homeworkId) {
     return {
         type:ActionTypes.CHANGE_ISEXCELLENT,
-        homeworkId
+        homeworkId 
     }
 }

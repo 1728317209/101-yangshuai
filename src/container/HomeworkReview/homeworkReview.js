@@ -23,6 +23,7 @@ class HomeworkReview extends Component {
             ALLReviewedHomeworkInfo,
             Actions
         } = this.props;
+        console.log('ccccccccccccccccccccccc', ALLReviewedHomeworkInfo);
         return (
             <div>
                 <Head 

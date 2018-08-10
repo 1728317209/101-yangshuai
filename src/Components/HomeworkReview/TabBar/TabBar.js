@@ -29,6 +29,7 @@ export default class TabBar extends Component {
                             Actions={Actions} 
                             homeworkId={item.id}
                             TabKey={TabKey}
+                            comments={item.comments}
                         />
                     </div>
                     <div className="right-Part">
