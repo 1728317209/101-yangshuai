@@ -32,7 +32,7 @@
 * DOM层级，外部注入组件
 
 3、自治：
-* 外部：数据、方法、evenHanler
+* 外部：数据、方法、evenHandler
 * 内部：state
 
 ## 其他
