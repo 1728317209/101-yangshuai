@@ -1,0 +1,21 @@
+.review-div {
+    border: 1px solid #aaa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 20px;
+    padding: 9px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+/* .review-btn {
+    float: right;
+} */
+.reviewTitle {
+    padding-left: 30px;
+    padding-top: 20px;
+}

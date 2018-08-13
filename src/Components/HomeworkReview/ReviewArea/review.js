@@ -32,27 +32,31 @@ handleClick = () => {
         const time = Date.parse(new Date()) / 1000;
         Actions.handleSendReviewComments(homeworkId, this.state.value, time, TabKey)
         this.setState({
-            value: ''
+            value: '',
         });
     } else {
         alert('NO REVIEW!')
     }
 }
 
+    getContents = (comments) => {
+        const contents = comments.map(comment => comment.content)
+        const suggestions = [...new Set(contents)];
+        return suggestions;
+    }
+
     render() {
         const { comments } = this.props;
-        const contents = comments.map(comment => comment.content)
-
+        const suggestions = this.getContents(comments);
         return (
             <div className="big-div">
                 <Mention
                     style={{ width: '100%' }}
                     onChange={this.handleChange}
                     defaultValue={toContentState('')}
-                    suggestions={contents}
+                    suggestions={suggestions}
                     prefix=''
                     onSelect={this.onSelect}
-                    // value={this.state.value}
                 />
                 <div className="button">
                     <Button onClick={this.handleClick}>发送</Button>

@@ -16,6 +16,7 @@ import HomeworkReview from './container/HomeworkReview/homeworkReview';
 import ActionSheet from './container/Demo/ActionSheet/ActionSheetDemo';
 import Dialog from './container/Demo/Dialog/DialogDemo';
 import Switch from './container/Demo/Switch/switchDemo';
+import CollectivePermission from './container/CollectivePermission/CollectivePermission';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -47,7 +48,8 @@ const routes = [{
         { path: 'homework', component: HomeworkReview },
         { path: 'actionSheet', component: ActionSheet },
         { path: 'dialog', component: Dialog },
-        { path: 'switch', component: Switch }
+        { path: 'switch', component: Switch },
+        { path: 'colPermission', component: CollectivePermission }
     ]
 }]
 

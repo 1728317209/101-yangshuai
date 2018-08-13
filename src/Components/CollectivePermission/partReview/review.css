@@ -1,0 +1,30 @@
+.review {
+    height: 400px;
+    border: 1px solid #aaa;
+    border-radius: 1%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    background-color: white;
+}
+.review-head {
+    margin: 10px 20px;
+    height: 20px;
+}
+.main {
+    padding: 10px;
+    display: flex;
+}
+.left-div {
+    border: 1px solid #aaa;
+    border-radius: 3%;
+    width: 50%;
+    padding: 10px;
+}
+.rigth-div {
+    border: 1px solid #aaa;
+    border-radius: 3%;
+    width: 50%;
+    padding: 10px;
+}

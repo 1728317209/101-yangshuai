@@ -169,3 +169,17 @@ export function handleChangeIsExcellent(homeworkId) {
         homeworkId 
     }
 }
+
+export function handleSelectedEmployee(ids) {
+    return {
+        type:ActionTypes.HANDLE_SELECT_EMPLOYEE,
+        ids
+    }
+}
+
+export function handleDelEmployee(ids) {
+    return {
+        type:ActionTypes.HANDLE_DEL_EMPLOYEE,
+        ids
+    }
+}
