@@ -16,9 +16,9 @@ export default class ReviewRigth extends Component {
         return this.state.selectedIds.map(id => {
             if(AllEmployee[id]) {
                 if(this.state.selectedBtn.indexOf(id) === -1) {
-                    return <Button onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                    return <Button key={AllEmployee[id].id} onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }else {
-                    return <Button disabled>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                    return <Button key={AllEmployee[id].id} disabled>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }
             }
         })
