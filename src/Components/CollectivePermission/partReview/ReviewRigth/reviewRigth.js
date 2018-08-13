@@ -33,9 +33,11 @@ export default class ReviewRigth extends Component {
 
     onSelect = (selectedKeys, info) => {
         console.log('selected', selectedKeys, info);
-        this.setState({
-            selectedIds: [...this.state.selectedIds, ...selectedKeys]
-        })
+        if(this.state.selectedIds.indexOf(selectedKeys[0]) === -1) {
+            this.setState({
+                selectedIds: [...this.state.selectedIds, ...selectedKeys]
+            })
+        }
     }
 
     renderGroup = (Groups) => Groups.map(Group => {
@@ -98,3 +100,19 @@ export default class ReviewRigth extends Component {
         );
     }
 }
+
+
+// renderDepartment = (arr, prevIdx) => {
+//     if (!arr || !arr.length) {
+//         return null;
+//     }
+//     return arr.map((item, idx) => {
+//         return (
+//             <TreeNode title={item.name} key={`${prevIdx}-${idx}`}>
+//                 {
+//                     this.renderDepartment(item.children, `${prevIdx}-${idx}`)
+//                 }
+//             </TreeNode>
+//         )
+//     })
+// }

@@ -84,14 +84,3 @@ export const init_colPermission_state = {
     }
 
 }
-
-// 所有部门
-//     总经办
-//     财务部
-//     研发部
-//         开发一组
-//         开发二组
-//             personA
-//             personB
-//             personC
-//         测试组
