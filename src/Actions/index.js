@@ -170,10 +170,9 @@ export function handleChangeIsExcellent(homeworkId) {
     }
 }
 
-export function handleSelectedEmployee(ids) {
+export function handleSelectedEmployee() {
     return {
         type:ActionTypes.HANDLE_SELECT_EMPLOYEE,
-        ids
     }
 }
 
@@ -205,9 +204,22 @@ export function handleSetIsShowView(status) {
     }
 }
 
-export function handleDelEmployee(ids) {
+export function handleOnClickEmpBtn(id) {
     return {
-        type:ActionTypes.HANDLE_DEL_EMPLOYEE,
-        ids
+        type:ActionTypes.HANDLE_CLICK_RIGTH_EMP_BTN,
+        id
+    }
+}
+
+export function handleSelectEmpToDel(id) {
+    return {
+        type:ActionTypes.HANDLE_CLICK_LEFT_EMP_BTN,
+        id
+    }
+}
+
+export function handleDelEmployee() {
+    return {
+        type:ActionTypes.HANDLE_DEL_EMPLOYEE
     }
 }

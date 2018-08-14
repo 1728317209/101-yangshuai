@@ -13,10 +13,10 @@ export default class ReviewLeft extends Component {
         const { selectedEmployee, AllEmployee } = this.props;
         return selectedEmployee.map(id => {
             if(AllEmployee[id]) {
-                if(this.state.selectedBtn.indexOf(id) === -1) {
-                    return <Button key={AllEmployee[id].id} type='primary' onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                if(AllEmployee[id].isToDel) {
+                    return <Button key={AllEmployee[id].id} type='primary' onClick={() => this.onClickBtn(id)} >{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }else {
-                    return <Button key={AllEmployee[id].id}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                    return <Button key={AllEmployee[id].id} onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }
             }else {
                 return null;
@@ -25,14 +25,13 @@ export default class ReviewLeft extends Component {
     }
 
     onClickBtn = (id) => {
-        this.setState({
-            selectedBtn: [...this.state.selectedBtn, id]
-        });
+        const { Actions } = this.props;
+        Actions.handleSelectEmpToDel(id);
     }
 
     handleDelEmployee = () => {
         const { Actions } = this.props;
-        Actions.handleDelEmployee(this.state.selectedBtn);
+        Actions.handleDelEmployee();
         this.setState({
             selectedBtn: []
         })
@@ -46,8 +45,7 @@ export default class ReviewLeft extends Component {
 
     onSearch = () => {
         const { Actions } = this.props;
-        // Actions.handleSearchEmp(parseInt(this.state.inputVal, 10));
-        Actions.handleSearchSelectedEmp(parseInt(this.state.inputVal, 10));
+        Actions.handleSearchSelectedEmp(this.state.inputVal);
         this.setState({
             inputVal: ''
         })

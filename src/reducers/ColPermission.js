@@ -9,12 +9,25 @@ export default function ColPermission(state=init_colPermission_state, action) {
             }
         }
         case ActionTypes.HANDLE_SELECT_EMPLOYEE: {
+            const { DepartmentEntities: { AllEmployee } } = state;
+            let selectedEmployee = [];
+            for(let x in AllEmployee) {
+                if(AllEmployee[x].isSelected) {
+                    selectedEmployee.push(x);
+                    AllEmployee[x].isSelected = false;
+                }
+            }
             return {
                 ...state,
-                selectedEmployee: [...action.ids]
+                selectedEmployee: [...selectedEmployee],
+                DepartmentEntities: {
+                    ...state.DepartmentEntities,
+                    AllEmployee: AllEmployee
+                }
             }
         }
         case ActionTypes.HANDLE_SEARCH_SELECTED_EMPLOYEE: {
+            console.log(state.selectedEmployee, action.id)
             if(state.selectedEmployee.indexOf(action.id) === (-1)) {
                 alert('NOT FOUND!')
                 return {
@@ -41,6 +54,7 @@ export default function ColPermission(state=init_colPermission_state, action) {
             }
         }
         case ActionTypes.HANDLE_SEARCH_EMPLOYEE: {
+            console.log(state.currentEmployee, action.id)
             if(state.currentEmployee.indexOf(action.id) === (-1)) {
                 alert('NOT FOUND!')
                 return {
@@ -55,15 +69,58 @@ export default function ColPermission(state=init_colPermission_state, action) {
             }
         }
         case ActionTypes.HANDLE_DEL_EMPLOYEE: {
-            console.log(123456, action.ids)
-            const { selectedEmployee } = state;
-            for(let i=0; i<action.ids.length; i++) {
-                const index = selectedEmployee.indexOf(action.ids[i]);
+            const { 
+                selectedEmployee, 
+                DepartmentEntities: { AllEmployee } 
+            } = state;
+            const selectedBtn = [];
+            for(let x in AllEmployee) {
+                if(AllEmployee[x].isToDel) {
+                    selectedBtn.push(x);
+                    AllEmployee[x].isToDel = false;
+                }
+            }
+            for(let i=0; i<selectedBtn.length; i++) {
+                const index = selectedEmployee.indexOf(selectedBtn[i]);
                 selectedEmployee.splice(index,1)
             }
             return {
                 ...state,
-                selectedEmployee: [...selectedEmployee]
+                selectedEmployee: [...selectedEmployee],
+                DepartmentEntities: { 
+                    ...state.DepartmentEntities,
+                    AllEmployee: AllEmployee
+                } 
+            }
+        }
+        case ActionTypes.HANDLE_CLICK_RIGTH_EMP_BTN: {
+            return {
+                ...state,
+                DepartmentEntities: {
+                    ...state.DepartmentEntities,
+                    AllEmployee: {
+                        ...state.DepartmentEntities.AllEmployee,
+                        [action.id]: {
+                            ...state.DepartmentEntities.AllEmployee[action.id],
+                            isSelected: !state.DepartmentEntities.AllEmployee[action.id].isSelected
+                        }
+                    }
+                }
+            }
+        }
+        case ActionTypes.HANDLE_CLICK_LEFT_EMP_BTN: {
+            return {
+                ...state,
+                DepartmentEntities: {
+                    ...state.DepartmentEntities,
+                    AllEmployee: {
+                        ...state.DepartmentEntities.AllEmployee,
+                        [action.id]: {
+                            ...state.DepartmentEntities.AllEmployee[action.id],
+                            isToDel: !state.DepartmentEntities.AllEmployee[action.id].isToDel
+                        }
+                    }
+                }
             }
         }
         default:

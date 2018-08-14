@@ -15,10 +15,10 @@ export default class ReviewRigth extends Component {
         const { AllEmployee, currentEmployee } = this.props;
         return currentEmployee.map(id => {
             if(AllEmployee[id]) {
-                if(this.state.selectedBtn.indexOf(id) === -1) {
-                    return <Button key={AllEmployee[id].id} type='primary' onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                if(AllEmployee[id].isSelected) {
+                    return <Button key={AllEmployee[id].id} type='primary' onClick={() => this.onClickBtn(id)} >{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }else {
-                    return <Button key={AllEmployee[id].id} >{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                    return <Button key={AllEmployee[id].id} onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }
             }else {
                 return null;
@@ -27,22 +27,8 @@ export default class ReviewRigth extends Component {
     }
 
     onClickBtn = (id) => {
-        const index = this.state.selectedBtn.indexOf(id);
-        if(index === -1) {
-            this.setState({
-                selectedBtn: [
-                    ...this.state.selectedBtn, 
-                    id
-                ]
-            });
-        }
-        // else {
-        //     const newSelectedBtn = this.state.selectedBtn;
-        //     newSelectedBtn.splice(index, 1);
-        //     this.setState({
-        //         selectedBtn: [...newSelectedBtn]
-        //     })
-        // }
+        const { Actions } = this.props;
+        Actions.handleOnClickEmpBtn(id);
     }
 
     onSelect = (selectedKeys, info) => {
@@ -73,12 +59,7 @@ export default class ReviewRigth extends Component {
 
     handleClick = () => {
         const { Actions } = this.props;
-        if(this.state.selectedBtn.length) {
-            Actions.handleSelectedEmployee(this.state.selectedBtn)
-            this.setState({
-                selectedBtn: []
-            })
-        }
+        Actions.handleSelectedEmployee()
     }
 
     renderDepTree = (root, prevIdx) => {

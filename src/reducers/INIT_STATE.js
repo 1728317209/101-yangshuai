@@ -118,18 +118,18 @@ export const init_colPermission_state = {
 
         },
         AllEmployee: {
-            1001: {name: '小A', id: 1001},
-            1002: {name: '小B', id: 1002},
-            1003: {name: '小C', id: 1003},
-            1004: {name: '小D', id: 1004},
-            1005: {name: '小E', id: 1005},
-            1006: {name: '小F', id: 1006},
-            1007: {name: '小G', id: 1007},
-            1008: {name: '小H', id: 1008},
-            1009: {name: '小I', id: 1009},
-            1010: {name: '小J', id: 1010},
-            1011: {name: '小K', id: 1011},
-            1012: {name: '小L', id: 1012}
+            1001: {name: '小A', id: 1001, isSelected: false, isToDel: false},
+            1002: {name: '小B', id: 1002, isSelected: false, isToDel: false},
+            1003: {name: '小C', id: 1003, isSelected: false, isToDel: false},
+            1004: {name: '小D', id: 1004, isSelected: false, isToDel: false},
+            1005: {name: '小E', id: 1005, isSelected: false, isToDel: false},
+            1006: {name: '小F', id: 1006, isSelected: false, isToDel: false},
+            1007: {name: '小G', id: 1007, isSelected: false, isToDel: false},
+            1008: {name: '小H', id: 1008, isSelected: false, isToDel: false},
+            1009: {name: '小I', id: 1009, isSelected: false, isToDel: false},
+            1010: {name: '小J', id: 1010, isSelected: false, isToDel: false},
+            1011: {name: '小K', id: 1011, isSelected: false, isToDel: false},
+            1012: {name: '小L', id: 1012, isSelected: false, isToDel: false}
         }
     }
 
