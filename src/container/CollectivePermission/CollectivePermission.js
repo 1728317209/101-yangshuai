@@ -8,63 +8,60 @@ import './index.css';
 class ColPermission extends Component {
 
     render() {
-        const { Actions, selectedEmployee, AllEmployee, AllDepartmentIds, AllDepartment, GeneralManage, Finance,Develop } = this.props;
-        console.log('99999999999999', AllDepartment)
+        const { isShowView, currentEmployee, departmentTree, Actions, selectedEmployee, AllEmployee } = this.props;
         return (
             <div className="reviewBody"> 
-                <PartTop />
+                <PartTop 
+                    isShowView={isShowView}
+                    Actions={Actions}
+                />
                 <PartReview 
-                    AllDepartmentIds={AllDepartmentIds}
-                    AllDepartment={AllDepartment}
-                    GeneralManage={GeneralManage}
-                    Finance={Finance}
-                    Develop={Develop}
                     AllEmployee={AllEmployee}
                     selectedEmployee={selectedEmployee}
                     Actions={Actions}
+                    departmentTree={departmentTree}
+                    currentEmployee={currentEmployee}
+                    isShowView={isShowView}
                 />
             </div>
         );
     }
 }
 
-const mapEntities = (department, Groups, AllEmployee) => {
-    
-    return {
-        ...department,
-        Groups: Groups.map( Group => {
-            let thisEmployee = department.Groups[Group].Employee.map(id => {
-                return AllEmployee[id];
-            });
-            return { ...department.Groups[Group], Employee: thisEmployee }
-        })
+const mapEntities = (ids, departments, AllEmployee) => {
+    if(!ids || ids.length === 0) {
+        return null;
+    }else {
+        return (
+            ids.map(id => {
+                return {
+                    ...departments[id],
+                    employee: departments[id].employee.map(empId => AllEmployee[empId]),
+                    children: mapEntities(departments[id].children, departments, AllEmployee)
+                }
+            })
+        )
     }
 }
 
 function mapStateToProps(state) {
     const { ColPermission } = state;
-    const { DepartmentIds, DepartmentEntities, selectedEmployee } = ColPermission;
     const { 
-        DevelopGroups, 
-        GeneralManageGroups,
-        FinanceGroups,
-        AllDepartment
-    } = DepartmentIds;
-    const { 
-        GeneralManage, 
-        Finance,
-        Develop,
-        AllEmployee 
-    } = DepartmentEntities;
+        isShowView,
+        currentEmployee,
+        selectedEmployee,
+        DepartmentIds,
+        DepartmentEntities: {
+            departments,
+            AllEmployee
+        }
+    } = ColPermission;
     return {
-        AllDepartment: {
-            GeneralManage: mapEntities(GeneralManage, GeneralManageGroups, AllEmployee),
-            Finance: mapEntities(Finance, FinanceGroups, AllEmployee),
-            Develop: mapEntities(Develop, DevelopGroups, AllEmployee)
-        },
-        AllDepartmentIds: AllDepartment,
+        departmentTree: mapEntities(DepartmentIds, departments, AllEmployee),
+        selectedEmployee: selectedEmployee,
+        currentEmployee: currentEmployee,
         AllEmployee: AllEmployee,
-        selectedEmployee: selectedEmployee
+        isShowView: isShowView
     };
 }
 function mapDispatchToProps(dispatch) {

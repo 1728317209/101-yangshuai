@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import serverApi from './middleware/serverApi';
-import rootReducer from './Reducers';
+import rootReducer from './reducers/index';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux';

@@ -1,93 +1,121 @@
 import React, { Component } from 'react';
 import { Tree, Button, Input } from 'antd';
-// import TreeMenu from './treeMenu';
 import './index.css';
 const TreeNode = Tree.TreeNode;
 
 export default class ReviewRigth extends Component {
 
     state = {
-        selectedIds: [],
-        selectedBtn: []
+        // selectedIds: [],
+        selectedBtn: [],
+        inputVal: ''
     }
 
     renderButton = () => {
-        const { AllEmployee } = this.props;
-        return this.state.selectedIds.map(id => {
+        const { AllEmployee, currentEmployee } = this.props;
+        return currentEmployee.map(id => {
             if(AllEmployee[id]) {
                 if(this.state.selectedBtn.indexOf(id) === -1) {
-                    return <Button key={AllEmployee[id].id} onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                    return <Button key={AllEmployee[id].id} type='primary' onClick={() => this.onClickBtn(id)}>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }else {
-                    return <Button key={AllEmployee[id].id} disabled>{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
+                    return <Button key={AllEmployee[id].id} >{`${AllEmployee[id].name} ${AllEmployee[id].id}`}</Button>
                 }
+            }else {
+                return null;
             }
         })
     }
 
     onClickBtn = (id) => {
-        this.setState({
-            selectedBtn: [...this.state.selectedBtn, id]
-        });
-        console.log(this.state.selectedBtn)
+        const index = this.state.selectedBtn.indexOf(id);
+        if(index === -1) {
+            this.setState({
+                selectedBtn: [
+                    ...this.state.selectedBtn, 
+                    id
+                ]
+            });
+        }
+        // else {
+        //     const newSelectedBtn = this.state.selectedBtn;
+        //     newSelectedBtn.splice(index, 1);
+        //     this.setState({
+        //         selectedBtn: [...newSelectedBtn]
+        //     })
+        // }
     }
 
     onSelect = (selectedKeys, info) => {
-        console.log('selected', selectedKeys, info);
-        if(this.state.selectedIds.indexOf(selectedKeys[0]) === -1) {
+        const { Actions } = this.props;
+        // console.log('selected', selectedKeys, info);
+        if(selectedKeys.length) {
+            const index = selectedKeys[0].indexOf(':');
+            const id = selectedKeys[0].substr(index+1, selectedKeys[0].length-index)
+            Actions.handleOnTreeClick(id);
+        }else {
+            Actions.handleOnTreeClick('');
+        }
+    }
+
+    onInputChange = (e) => {
+        this.setState({
+            inputVal: e.target.value
+        })
+    }
+
+    onSearch = () => {
+        const { Actions } = this.props;
+        Actions.handleSearchEmp(parseInt(this.state.inputVal, 10));
+        this.setState({
+            inputVal: ''
+        })
+    }
+
+    handleClick = () => {
+        const { Actions } = this.props;
+        if(this.state.selectedBtn.length) {
+            Actions.handleSelectedEmployee(this.state.selectedBtn)
             this.setState({
-                selectedIds: [...this.state.selectedIds, ...selectedKeys]
+                selectedBtn: []
             })
         }
     }
 
-    renderGroup = (Groups) => Groups.map(Group => {
+    renderDepTree = (root, prevIdx) => {
+        if(!root || root.length===0) {
+            return null;
+        }
         return (
-            <TreeNode title={Group.name} key={Group.name}>
-                {
-                    Group.Employee.map(item => {
-                        return <TreeNode title={item.name} key={item.id} />
-                    })
-                }
-            </TreeNode>
+            root.map((item, idx) => {
+                return (
+                    <TreeNode title={item.name} key={`${prevIdx}-${idx}:${root[idx].id}`}>
+                        {
+                            this.renderDepTree(root[idx].children, `${prevIdx}-${idx}`)
+                        }
+                    </TreeNode>
+                )
+            })
         )
-    })
-
-    renderDepartment = (AllDepartmentIds, AllDepartment) => AllDepartmentIds.map(id => {
-        return (
-            <TreeNode title={AllDepartment[id].name} key={AllDepartment[id].name}>
-                {
-                    this.renderGroup(AllDepartment[id].Groups)
-                }
-            </TreeNode>
-        )
-    })
-
-    handleClick = () => {
-        const { Actions } = this.props;
-        Actions.handleSelectedEmployee(this.state.selectedBtn)
     }
-
     render() {
-        const { AllDepartment, AllDepartmentIds } = this.props;
+        const { departmentTree } = this.props;
         return (
             <div className="this-right-div">
                 <div className="treeMenu">
                     <Tree
                         showLine
-                        defaultExpandedKeys={['0-0-0']}
+                        defaultExpandedKeys={['0']}
                         onSelect={this.onSelect}
                     >
-                        <TreeNode title="AllDepartment" key='001'>
-                            {
-                                this.renderDepartment(AllDepartmentIds, AllDepartment)
-                            }
-                        </TreeNode>
+                        {
+                            this.renderDepTree(departmentTree, 'Dep')
+                        }
                     </Tree>
                 </div>
-                <div className="this-rigth-div">
-                    <div className="this-opration">
-                        <Input />
-                        <Button>搜索</Button>
+                <div className="rigth-all">
+                    <div className="this-opration divider">
+                        <Input onChange={this.onInputChange} value={this.state.inputVal}/>
+                        <Button onClick={this.onSearch}>搜索</Button>
                     </div>
                     <div className="this-rigth-btn">
                         {
@@ -100,19 +128,3 @@ export default class ReviewRigth extends Component {
         );
     }
 }
-
-
-// renderDepartment = (arr, prevIdx) => {
-//     if (!arr || !arr.length) {
-//         return null;
-//     }
-//     return arr.map((item, idx) => {
-//         return (
-//             <TreeNode title={item.name} key={`${prevIdx}-${idx}`}>
-//                 {
-//                     this.renderDepartment(item.children, `${prevIdx}-${idx}`)
-//                 }
-//             </TreeNode>
-//         )
-//     })
-// }

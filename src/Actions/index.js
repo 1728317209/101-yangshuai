@@ -177,6 +177,34 @@ export function handleSelectedEmployee(ids) {
     }
 }
 
+export function handleOnTreeClick(id) {
+    return {
+        type:ActionTypes.HANDLE_ON_TREE_CLICK,
+        id
+    }
+}
+
+export function handleSearchEmp(id) {
+    return {
+        type:ActionTypes.HANDLE_SEARCH_EMPLOYEE,
+        id
+    }
+}
+
+export function handleSearchSelectedEmp(id) {
+    return {
+        type:ActionTypes.HANDLE_SEARCH_SELECTED_EMPLOYEE,
+        id
+    }
+}
+
+export function handleSetIsShowView(status) {
+    return {
+        type:ActionTypes.HANDLE_SET_ISSHOWVIEW,
+        status
+    }
+}
+
 export function handleDelEmployee(ids) {
     return {
         type:ActionTypes.HANDLE_DEL_EMPLOYEE,

@@ -9,22 +9,24 @@
     background-color: white;
 }
 .review-head {
+    display: flex;
+    justify-content: space-between;
     margin: 10px 20px;
-    height: 20px;
+    height: 30px;
 }
 .main {
-    padding: 10px;
     display: flex;
+    justify-content: space-around;
 }
 .left-div {
     border: 1px solid #aaa;
     border-radius: 3%;
-    width: 50%;
+    width: 49%;
     padding: 10px;
 }
 .rigth-div {
     border: 1px solid #aaa;
     border-radius: 3%;
-    width: 50%;
+    width: 49%;
     padding: 10px;
 }
