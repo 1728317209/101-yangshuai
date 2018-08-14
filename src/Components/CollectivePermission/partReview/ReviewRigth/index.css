@@ -11,6 +11,7 @@
 .treeMenu {
     width: 40%;
     overflow: auto;
+    padding-right: 5px;
 }
 .this-rigth-btn {
     height: 240px;
@@ -22,6 +23,7 @@
 }
 .rigth-all {
     width: 60%;
+    padding-left: 5px;
 }
 .selectedBtn {
     background-color: #aaaaaa;
@@ -38,4 +40,18 @@
     right: 0;
     background-color: #e5e5e5;
     transform: scaleY(0.5)
+}
+.divider2 {
+    position: relative;
+}
+.divider2:after {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e5e5e5;
+    transform: scaleX(0.5)
 }

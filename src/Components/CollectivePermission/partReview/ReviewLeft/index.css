@@ -12,7 +12,6 @@
 .divider {
     position: relative;
 }
-
 .divider:after {
     position: absolute;
     content: '';

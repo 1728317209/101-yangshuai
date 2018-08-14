@@ -47,7 +47,7 @@ export default class ReviewRigth extends Component {
 
     onSelect = (selectedKeys, info) => {
         const { Actions } = this.props;
-        // console.log('selected', selectedKeys, info);
+        console.log('selected', selectedKeys, info);
         if(selectedKeys.length) {
             const index = selectedKeys[0].indexOf(':');
             const id = selectedKeys[0].substr(index+1, selectedKeys[0].length-index)
@@ -112,8 +112,8 @@ export default class ReviewRigth extends Component {
                         }
                     </Tree>
                 </div>
-                <div className="rigth-all">
-                    <div className="this-opration divider">
+                <div className="rigth-all divider2">
+                    <div className="this-opration">
                         <Input onChange={this.onInputChange} value={this.state.inputVal}/>
                         <Button onClick={this.onSearch}>搜索</Button>
                     </div>

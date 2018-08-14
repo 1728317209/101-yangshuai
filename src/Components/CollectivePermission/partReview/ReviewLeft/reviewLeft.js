@@ -56,7 +56,7 @@ export default class ReviewLeft extends Component {
     render() {
         return (
             <div>
-                <div className="operation divider">
+                <div className="operation">
                     <Button onClick={this.handleDelEmployee}>删除</Button>
                     <Input onChange={this.onInputChange} value={this.state.inputVal}/>
                     <Button onClick={this.onSearch}>搜索</Button>
