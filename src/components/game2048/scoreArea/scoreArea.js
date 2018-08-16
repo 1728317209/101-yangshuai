@@ -13,6 +13,9 @@ export default class SorceArea extends React.Component {
 
   render() {
     const { bestScore, currentScore } = this.props;
+    if (currentScore === 2048) {
+      alert('Congratulations, You Win!');
+    }
     return (
       <div className="SorceArea">
         <div className="head">

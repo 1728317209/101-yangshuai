@@ -36,7 +36,7 @@ export function unLockNewGrid() {
   };
 }
 
-export function moveGridToLeft(direction) {
+export function moveGrid(direction) {
   return {
     type: ActionTypes.MOVE_GRID_TO_LEFT,
     direction

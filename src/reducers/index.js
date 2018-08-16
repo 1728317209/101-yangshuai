@@ -49,7 +49,12 @@ export default function Game2048(state = GameInfo, action) {
       };
     }
     case ActionTypes.MOVE_GRID_TO_LEFT: {
-      const { gameGrid, flag, lockedGridNum, currentScore } = state;
+      const {
+        gameGrid,
+        flag,
+        lockedGridNum,
+        currentScore
+      } = state;
       // 操作数组之前 将原方向统一转置 向左
       let newLockedGridNum = lockedGridNum;
       const newFlag = [...flag];
@@ -58,7 +63,7 @@ export default function Game2048(state = GameInfo, action) {
       let score = currentScore;
       if (lockedGridNum === 0) {
         if (isOver(gameGrid)) {
-          alert('Game Over!');
+          // alert('Game Over!');
           return {
             ...state,
             isOver: true,
@@ -120,13 +125,6 @@ export default function Game2048(state = GameInfo, action) {
       }
       return state;
     }
-    // case ActionTypes.IS_OVER: {
-    //   const { lockedGridNum } = state;
-    //   if (lockedGridNum) {
-    //     alert('Game Over');
-    //   }
-    //   break;
-    // }
     case ActionTypes.RESTART: {
       const { lockedGridNum } = state;
       let flag = false;

@@ -8,27 +8,57 @@ import './index.css';
 
 class GameHome extends React.Component {
   componentWillMount() {
+    console.log('Game Home');
   }
 
   render() {
-    const { isUpdate, Actions, bestScore, currentScore, gameGrid, flag } = this.props;
-    console.log(bestScore, currentScore, gameGrid);
+    const {
+      isUpdate,
+      Actions,
+      bestScore,
+      currentScore,
+      gameGrid,
+      flag,
+      isOver
+    } = this.props;
+    if (isOver) {
+      alert('Game Over!');
+    }
     return (
       <div className="gameHome">
-        <ScoreArea Actions={Actions} bestScore={bestScore} currentScore={currentScore} />
-        <GameArea Actions={Actions} isUpdate={isUpdate} bestScore={bestScore} currentScore={currentScore} gameGrid={gameGrid} flag={flag} />
+        <ScoreArea
+          Actions={Actions}
+          bestScore={bestScore}
+          currentScore={currentScore}
+        />
+        <GameArea
+          Actions={Actions}
+          isUpdate={isUpdate}
+          bestScore={bestScore}
+          currentScore={currentScore}
+          gameGrid={gameGrid}
+          flag={flag}
+        />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { isUpdate, bestScore, currentScore, gameGrid, flag } = state;
+  const {
+    isOver,
+    isUpdate,
+    bestScore,
+    currentScore,
+    gameGrid,
+    flag
+  } = state;
   return {
     bestScore,
     currentScore,
     gameGrid,
     flag,
+    isOver,
     isUpdate
   };
 }
