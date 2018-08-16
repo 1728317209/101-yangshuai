@@ -1,15 +1,12 @@
 import React from 'react';
-import './App.css';
+import 'antd/dist/antd.css';
 
-
-export default class App extends React.Component {
-
+export default class App extends React.PureComponent {
   render() {
     return (
       <div>
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }
 }
-

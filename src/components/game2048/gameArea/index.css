@@ -1,0 +1,24 @@
+.GameArea {
+  width: 305px;
+  height: 305px;
+  font-size: 31px;
+  background-color: rgba(187, 173, 160, .3);
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  border-radius: 6px;
+}
+.gameItem {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(238, 228, 218, 0.7);
+  border: 3px solid white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}

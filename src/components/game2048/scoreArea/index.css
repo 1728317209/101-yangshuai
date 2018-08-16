@@ -1,0 +1,84 @@
+.SorceArea {
+  padding: 10px 25px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+div span {
+  display: block;
+}
+.title-2048 {
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+  float: left; 
+  margin: 10px 0px;
+}
+.score_container {
+  float: right;
+  margin: 10px 0px;
+}
+.curentSorce {
+  position: relative;
+  display: inline-block;
+  background: #bbada0;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 black;
+  padding: 0px 5px;
+  margin: 0px 1px;
+  width: 80px;
+  height: 50px;
+}
+.bestSorce {
+  position: relative;
+  display: inline-block;
+  background: #bbada0;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 black;
+  padding: 0px 5px;
+  margin: 0px 1px;
+  width: 80px;
+  height: 50px;
+}
+.game_infro {
+  display: flex;
+  justify-content: space-between;
+}
+.score-font {
+  font-size: 12px;
+  padding-top: 8px;
+}
+.game_intro {
+  width: 60%;
+  font-size: 8px;
+  line-height: 1.5;
+  margin: 0;
+}
+.game_restart {
+  width: 35%;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+}
+.game_restart_btn {
+  width: 70px;
+  height: 35px;
+  font-size: 16px;
+  background: rgb(143, 122, 102);
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  padding: 5px 0px;
+  margin: 0px;
+  cursor: pointer;
+}
