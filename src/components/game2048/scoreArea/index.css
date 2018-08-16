@@ -83,3 +83,14 @@ div span {
   margin: 0px;
   cursor: pointer;
 }
+.score-addition {
+  position: absolute;
+  right: 37px;
+  color: red;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  color: rgba(119, 110, 101, 0.9);
+  z-index: 100;
+  -webkit-animation: scoreAddition 600ms ease-in;
+}

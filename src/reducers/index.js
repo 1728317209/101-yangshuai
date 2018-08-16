@@ -53,7 +53,8 @@ export default function Game2048(state = GameInfo, action) {
         gameGrid,
         flag,
         lockedGridNum,
-        currentScore
+        currentScore,
+        bestScore
       } = state;
       // 操作数组之前 将原方向统一转置 向左
       let newLockedGridNum = lockedGridNum;
@@ -61,13 +62,16 @@ export default function Game2048(state = GameInfo, action) {
       let unLockFlag = false;
       let newIsUpdate = false;
       let score = currentScore;
+      let newBestScore = bestScore;
+      if (score > newBestScore) {
+        newBestScore = score;
+      }
       if (lockedGridNum === 0) {
         if (isOver(gameGrid)) {
-          // alert('Game Over!');
           return {
             ...state,
             isOver: true,
-            bestScore: currentScore
+            bestScore: newBestScore
           };
         }
       }
@@ -112,6 +116,10 @@ export default function Game2048(state = GameInfo, action) {
             unLockFlag = true;
           }
         }
+        // 如果有加分
+        if (score > newBestScore) {
+          newBestScore = score;
+        }
         // 渲染之前 转置回原方向
         newGameGrid = transposeUndo(newGameGrid, action.direction);
         return {
@@ -120,13 +128,14 @@ export default function Game2048(state = GameInfo, action) {
           flag: newFlag,
           isUpdate: newIsUpdate,
           lockedGridNum: newLockedGridNum,
-          currentScore: score
+          currentScore: score,
+          bestScore: newBestScore
         };
       }
       return state;
     }
     case ActionTypes.RESTART: {
-      const { lockedGridNum } = state;
+      // const { bestScore } = state;
       let flag = false;
       const newNameGrid = [
         [0, 0, 0, 0],
@@ -134,7 +143,7 @@ export default function Game2048(state = GameInfo, action) {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ];
-      let newLockedGridNum = lockedGridNum;
+      // let newLockedGridNum = lockedGridNum;
       while (!flag) {
         const x1 = Math.floor(Math.random() * 4);
         const y1 = Math.floor(Math.random() * 4);
@@ -145,7 +154,7 @@ export default function Game2048(state = GameInfo, action) {
         if (x1 !== x2 || y1 !== y2) {
           newNameGrid[x1][y1] = randNum1;
           newNameGrid[x2][y2] = randNum2;
-          newLockedGridNum -= 2;
+          // newLockedGridNum -= 2;
           flag = true;
         }
       }
@@ -153,8 +162,9 @@ export default function Game2048(state = GameInfo, action) {
         ...state,
         currentScore: 0,
         isUpdate: false,
-        lockedGridNum: newLockedGridNum,
-        gameGrid: newNameGrid
+        lockedGridNum: 14,
+        gameGrid: newNameGrid,
+        isOver: false
       };
     }
     default:

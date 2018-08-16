@@ -11,8 +11,15 @@ export default class SorceArea extends React.Component {
     Actions.restart();
   }
 
-  render() {
+  renderBestScore = () => {
     const { bestScore, currentScore } = this.props;
+    if (currentScore > bestScore) {
+      return <span>{currentScore}</span>;
+    }
+    return <span>{bestScore}</span>;
+  }
+  render() {
+    const { currentScore } = this.props;
     if (currentScore === 2048) {
       alert('Congratulations, You Win!');
     }
@@ -27,7 +34,9 @@ export default class SorceArea extends React.Component {
             </div>
             <div className="bestSorce">
               <span className="score-font">Best Sorces</span>
-              <span>{bestScore}</span>
+              {
+                this.renderBestScore()
+              }
             </div>
           </div>
         </div>
