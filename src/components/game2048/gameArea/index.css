@@ -10,15 +10,68 @@
   align-items: center;
   padding: 5px;
   border-radius: 6px;
+  flex-shrink: 1;
 }
 .gameItem {
   width: 60px;
   height: 60px;
-  background-color: rgba(238, 228, 218, 0.7);
+  /* background-color: rgba(238, 228, 218, 0.7); */
   border: 3px solid white;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   cursor: pointer;
+}
+.Num2 {
+  background: #eee4da;
+}
+.Num4 {
+  background: #ede0c8;
+}
+.Num8 {
+  color: #f9f6f2;
+  background: #f2b179;
+}
+.Num16 {
+  color: #f9f6f2;
+  background: #f59563;
+}
+.Num32 {
+  color: #f9f6f2;
+  background: #f67c5f;
+}
+.Num64 {
+  color: #f9f6f2;
+  background: #f65e3b;
+}
+.Num128 {
+  color: #f9f6f2;
+  background: #edcf72;
+  font-size: 45px;
+  line-height: 2.3;
+}
+.Num256 {
+  color: #f9f6f2;
+  background: #edcc61;
+  font-size: 45px;
+  line-height: 2.3;
+}
+.Num512 {
+  color: #f9f6f2;
+  background: #edc850;
+  font-size: 45px;
+  line-height: 2.3;
+}
+.Num1024 {
+  color: #f9f6f2;
+  background: #edc53f;
+  font-size: 35px;
+  line-height: 2.9;
+}
+.Num2048 {
+  color: #f9f6f2;
+  background: #edc22e;
+  font-size: 35px;
+  line-height: 2.9;
 }

@@ -1,5 +1,6 @@
 .SorceArea {
   padding: 10px 25px;
+  flex-shrink: 1;
 }
 .head {
   display: flex;

@@ -36,8 +36,21 @@ export function unLockNewGrid() {
   };
 }
 
-export function moveGridToLeft() {
+export function moveGridToLeft(direction) {
   return {
-    type: ActionTypes.MOVE_GRID_TO_LEFT
+    type: ActionTypes.MOVE_GRID_TO_LEFT,
+    direction
+  };
+}
+
+export function isOver() {
+  return {
+    type: ActionTypes.IS_OVER
+  };
+}
+
+export function restart() {
+  return {
+    type: ActionTypes.RESTART
   };
 }
