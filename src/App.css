@@ -26,3 +26,28 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+html {
+  height: 100%;
+}
+
+body{
+  padding: 3px;
+  background: #faf8ef;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  color: #776e65;
+  width: 375px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#root {
+  height: 100%;
+  background: url('./resource/bg2.jpg');
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+
+.app-div {
+  height: 100%;
+}

@@ -3,7 +3,7 @@
   width: 305px;
   height: 305px;
   font-size: 31px;
-  background-color: rgba(187, 173, 160, .3);
+  background-color: rgba(187, 173, 160, .2);
   margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
@@ -12,6 +12,7 @@
   padding: 5px;
   border-radius: 6px;
   flex-shrink: 1;
+  /* flex-grow: 1; */
 }
 .gameItem {
   width: 60px;

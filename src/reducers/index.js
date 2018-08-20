@@ -194,7 +194,8 @@ export default function Game2048(state = GameInfo, action) {
         gameGrid: newNameGrid,
         isOver: false,
         isWin: false,
-        flag: newFlag
+        flag: newFlag,
+        addScore: 0
       };
     }
     default:

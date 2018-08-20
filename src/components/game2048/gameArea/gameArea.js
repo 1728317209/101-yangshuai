@@ -15,7 +15,6 @@ export default class GameArea extends React.Component {
 
   componentWillMount() {
     const { Actions } = this.props;
-    console.log('Game 2048');
     window.addEventListener('keydown', this.onKeyDown);
     Actions.restart();
   }
@@ -75,18 +74,23 @@ export default class GameArea extends React.Component {
     const moveY = endY - this.state.startY;
     const divX = e.changedTouches[0].target.clientWidth;
     const divY = e.changedTouches[0].target.clientHeight;
-    if (Math.abs(moveX) < 0.3 * divX && Math.abs(moveY) < 0.3 * divY) {
+    // 误触
+    if (Math.abs(moveX) < 0.1 * divX || Math.abs(moveY) < 0.1 * divY) {
       return null;
     } else if (Math.abs(moveX) > Math.abs(moveY)) {
       if (moveX > 0) {
+        console.log('右');
         Actions.moveGrid(1);// 向右
       } else {
+        console.log('左');
         Actions.moveGrid(0);// 向左
       }
     } else if (Math.abs(moveX) <= Math.abs(moveY)) {
       if (moveY < 0) {
+        console.log('上');
         Actions.moveGrid(2);// 向上
       } else {
+        console.log('下');
         Actions.moveGrid(3);// 向下
       }
     }
@@ -102,7 +106,9 @@ export default class GameArea extends React.Component {
     return lineItem.map((item, idx) => {
       if (item) {
         if (flag[lineIdx][idx] === 1) {
+          console.log('.................', appearedFlag);
           appearedFlag = !appearedFlag;
+          console.log('.................', appearedFlag);
           return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} appeared-${appearedFlag}`}>{item}</div>;
         } else if (flag[lineIdx][idx] === 2) {
           mergeFlag = !mergeFlag;

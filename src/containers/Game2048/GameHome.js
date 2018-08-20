@@ -6,51 +6,43 @@ import GameArea from '../../components/game2048/gameArea/gameArea';
 import * as HandleActions from '../../actions/index';
 import './index.css';
 
-class GameHome extends React.Component {
-  componentWillMount() {
-    console.log('Game Home');
+const GameHome = ({
+  isUpdate,
+  Actions,
+  bestScore,
+  currentScore,
+  gameGrid,
+  flag,
+  isOver,
+  isWin,
+  addScore
+}) => {
+  if (isOver) {
+    alert('Game Over!');
   }
-
-  render() {
-    const {
-      isUpdate,
-      Actions,
-      bestScore,
-      currentScore,
-      gameGrid,
-      flag,
-      isOver,
-      isWin,
-      addScore
-    } = this.props;
-    if (isOver) {
-      alert('Game Over!');
-    }
-    if (isWin) {
-      setTimeout(() => { alert('Congratulations'); }, 100);
-      // Actions.restart();
-    }
-    return (
-      <div className="gameHome" id="gameHome">
-        <ScoreArea
-          Actions={Actions}
-          bestScore={bestScore}
-          currentScore={currentScore}
-          addScore={addScore}
-        />
-        <GameArea
-          Actions={Actions}
-          isUpdate={isUpdate}
-          bestScore={bestScore}
-          currentScore={currentScore}
-          gameGrid={gameGrid}
-          flag={flag}
-          isWin={isWin}
-        />
-      </div>
-    );
+  if (isWin) {
+    setTimeout(() => { alert('Congratulations'); }, 1500);
   }
-}
+  return (
+    <div className="gameHome" id="gameHome">
+      <ScoreArea
+        Actions={Actions}
+        bestScore={bestScore}
+        currentScore={currentScore}
+        addScore={addScore}
+      />
+      <GameArea
+        Actions={Actions}
+        isUpdate={isUpdate}
+        bestScore={bestScore}
+        currentScore={currentScore}
+        gameGrid={gameGrid}
+        flag={flag}
+        isWin={isWin}
+      />
+    </div>
+  );
+};
 
 function mapStateToProps(state) {
   const {

@@ -18,7 +18,6 @@ export default class SorceArea extends React.Component {
 
   renderCurrentAddScore = () => {
     const { addScore } = this.props;
-    console.log('render');
     if (addScore !== 0) {
       addScoreFlag = !addScoreFlag;
       return (

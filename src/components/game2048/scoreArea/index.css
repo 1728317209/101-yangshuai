@@ -1,7 +1,10 @@
 .SorceArea {
-  padding: 10px 25px;
+  padding: 10px 3px;
   flex-shrink: 1;
+  /* flex-grow: 1; */
   margin-top: 15px;
+  width: 305px;
+  margin: 0 auto;
 }
 .head {
   display: flex;
