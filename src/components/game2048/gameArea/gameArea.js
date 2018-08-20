@@ -20,30 +20,24 @@ export default class GameArea extends React.Component {
     Actions.restart();
   }
 
-  componentWillUpdate() {
-    console.log('will updata');
-  }
-
-  componentDidUpdate() {
-    console.log('did updata');
-  }
-
   onKeyDown = e => {
     const { Actions } = this.props;
-    e.preventDefault();
     switch (e.keyCode) {
       case 38:
       case 87:
+        e.preventDefault();
         console.log('上');
         Actions.moveGrid(2); // 2
         break;
       case 40:
       case 83:
+        e.preventDefault();
         console.log('下');
         Actions.moveGrid(3); // 3
         break;
       case 37:
       case 65:
+        e.preventDefault();
         console.log('左');
         Actions.moveGrid(0);// 0
         break;
@@ -75,16 +69,15 @@ export default class GameArea extends React.Component {
 
   onTouchEnd = e => {
     const { Actions } = this.props;
-    console.log('end');
-    console.log(e.changedTouches[0].clientX);
-    console.log(e.changedTouches[0].clientY);
     const endX = e.changedTouches[0].clientX;
     const endY = e.changedTouches[0].clientY;
     const moveX = endX - this.state.startX;
     const moveY = endY - this.state.startY;
-    console.log(moveX);
-    console.log(moveY);
-    if (Math.abs(moveX) > Math.abs(moveY)) {
+    const divX = e.changedTouches[0].target.clientWidth;
+    const divY = e.changedTouches[0].target.clientHeight;
+    if (Math.abs(moveX) < 0.3 * divX && Math.abs(moveY) < 0.3 * divY) {
+      return null;
+    } else if (Math.abs(moveX) > Math.abs(moveY)) {
       if (moveX > 0) {
         Actions.moveGrid(1);// 向右
       } else {
@@ -97,6 +90,7 @@ export default class GameArea extends React.Component {
         Actions.moveGrid(3);// 向下
       }
     }
+    return null;
   }
 
   getGridItemClass = num => {
@@ -105,7 +99,6 @@ export default class GameArea extends React.Component {
   }
 
   renderGameGrid = (gameGrid, flag) => gameGrid.map((lineItem, lineIdx) => {
-    console.log(flag);
     return lineItem.map((item, idx) => {
       if (item) {
         if (flag[lineIdx][idx] === 1) {
