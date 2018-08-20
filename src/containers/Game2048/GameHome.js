@@ -19,17 +19,24 @@ class GameHome extends React.Component {
       currentScore,
       gameGrid,
       flag,
-      isOver
+      isOver,
+      isWin,
+      addScore
     } = this.props;
     if (isOver) {
       alert('Game Over!');
     }
+    if (isWin) {
+      setTimeout(() => { alert('Congratulations'); }, 100);
+      // Actions.restart();
+    }
     return (
-      <div className="gameHome">
+      <div className="gameHome" id="gameHome">
         <ScoreArea
           Actions={Actions}
           bestScore={bestScore}
           currentScore={currentScore}
+          addScore={addScore}
         />
         <GameArea
           Actions={Actions}
@@ -38,6 +45,7 @@ class GameHome extends React.Component {
           currentScore={currentScore}
           gameGrid={gameGrid}
           flag={flag}
+          isWin={isWin}
         />
       </div>
     );
@@ -51,7 +59,9 @@ function mapStateToProps(state) {
     bestScore,
     currentScore,
     gameGrid,
-    flag
+    flag,
+    isWin,
+    addScore
   } = state;
   return {
     bestScore,
@@ -59,7 +69,9 @@ function mapStateToProps(state) {
     gameGrid,
     flag,
     isOver,
-    isUpdate
+    isUpdate,
+    isWin,
+    addScore
   };
 }
 function mapDispatchToProps(dispatch) {

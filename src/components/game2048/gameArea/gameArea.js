@@ -1,6 +1,9 @@
 import React from 'react';
 import './index.css';
 
+let appearedFlag = false;
+let mergeFlag = false;
+
 export default class GameArea extends React.Component {
   constructor(props) {
     super(props);
@@ -21,8 +24,13 @@ export default class GameArea extends React.Component {
     console.log('will updata');
   }
 
+  componentDidUpdate() {
+    console.log('did updata');
+  }
+
   onKeyDown = e => {
     const { Actions } = this.props;
+    e.preventDefault();
     switch (e.keyCode) {
       case 38:
       case 87:
@@ -78,41 +86,47 @@ export default class GameArea extends React.Component {
     console.log(moveY);
     if (Math.abs(moveX) > Math.abs(moveY)) {
       if (moveX > 0) {
-        console.log('向右');
         Actions.moveGrid(1);// 向右
       } else {
-        console.log('向左');
         Actions.moveGrid(0);// 向左
       }
     } else if (Math.abs(moveX) <= Math.abs(moveY)) {
       if (moveY < 0) {
-        console.log('向上');
         Actions.moveGrid(2);// 向上
       } else {
-        console.log('向下');
         Actions.moveGrid(3);// 向下
       }
     }
   }
 
   getGridItemClass = num => {
-    const className = `gameItem Num${num}`;
+    const className = `gameItem Num${num} appeared`;
     return className;
   }
 
-  renderGameGrid = gameGrid => gameGrid.map((lineItem, lineIdx) => lineItem.map((item, idx) => {
-    if (item) {
-      return <div key={`${lineIdx}-${idx}`} className={this.getGridItemClass(item)}>{item}</div>;
-    }
-    return <div key={`${lineIdx}-${idx}`} className="gameItem" />;
-  }));
+  renderGameGrid = (gameGrid, flag) => gameGrid.map((lineItem, lineIdx) => {
+    console.log(flag);
+    return lineItem.map((item, idx) => {
+      if (item) {
+        if (flag[lineIdx][idx] === 1) {
+          appearedFlag = !appearedFlag;
+          return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} appeared-${appearedFlag}`}>{item}</div>;
+        } else if (flag[lineIdx][idx] === 2) {
+          mergeFlag = !mergeFlag;
+          return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} merge-${mergeFlag}`}>{item}</div>;
+        }
+        return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item}`}>{item}</div>;
+      }
+      return <div key={`${lineIdx}-${idx}`} className="gameItem" />;
+    });
+  });
 
   render() {
-    const { gameGrid } = this.props;
+    const { gameGrid, flag } = this.props;
     return (
-      <div className="GameArea" onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd} >
+      <div className="GameArea" id="GameArea" onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd} >
         {
-          this.renderGameGrid(gameGrid)
+          this.renderGameGrid(gameGrid, flag)
         }
       </div>
     );

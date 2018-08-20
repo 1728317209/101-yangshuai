@@ -1,4 +1,5 @@
 .GameArea {
+  position: relative;
   width: 305px;
   height: 305px;
   font-size: 31px;
@@ -15,7 +16,6 @@
 .gameItem {
   width: 60px;
   height: 60px;
-  /* background-color: rgba(238, 228, 218, 0.7); */
   border: 3px solid white;
   border-radius: 12px;
   display: flex;
@@ -74,4 +74,76 @@
   background: #edc22e;
   font-size: 23px;
   line-height: 2.9;
+}
+.alter {
+  /* z-index: 100; */
+  position: absolute;
+}
+.appeared-true {
+  animation:appeared-true 1000ms;
+  -webkit-animation:appeared-true 1000ms ease-out; /* Safari and Chrome */
+}
+@keyframes appeared-true {
+  0%   {
+    border: 10px solid white;
+  }
+  25%  {
+    border: 3px solid white;
+  }
+  50%  {
+    border: 7px solid white;
+  }
+  100% {
+    border: 3px solid white;
+  }
+}
+.appeared-false {
+  animation:appeared-false 1000ms;
+  -webkit-animation:appeared-false 1000ms ease-out; /* Safari and Chrome */
+}
+@keyframes appeared-false {
+  0%   {
+    border: 10px solid white;
+  }
+  25%  {
+    border: 3px solid white;
+  }
+  50%  {
+    border: 7px solid white;
+  }
+  100% {
+    border: 3px solid white;
+  }
+}
+.merge-true {
+  animation:merge-true 1000ms;
+  -webkit-animation:merge-true 1000ms ease-out; /* Safari and Chrome */
+}
+@keyframes merge-true {
+  0%   {
+    /* background: red; */
+    border: 7px solid white;
+    transform: rotate3d(0, 1, 0, 0deg)
+  }
+  100% {
+    /* background: green; */
+    border: 3px solid white;
+    transform: rotate3d(0, 1, 0, 360deg)
+  }
+}
+.merge-false {
+  animation:merge-false 1000ms;
+  -webkit-animation:merge-false 1000ms ease-out; /* Safari and Chrome */
+}
+@keyframes merge-false {
+  0%   {
+    /* background: red; */
+    border: 7px solid white;
+    transform: rotate3d(0, 1, 0, 0deg)
+  }
+  100% {
+    /* background: green; */
+    border: 3px solid white;
+    transform: rotate3d(0, 1, 0, 360deg)
+  }
 }

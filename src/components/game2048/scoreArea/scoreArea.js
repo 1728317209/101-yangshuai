@@ -1,14 +1,42 @@
 import React from 'react';
 import './index.css';
 
+let addScoreFlag = false;
+let addBestScoreFlag = false;
+
 export default class SorceArea extends React.Component {
-  componentDidMount() {
-    console.log('Game 2048');
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
   }
 
   handleRestart = () => {
     const { Actions } = this.props;
     Actions.restart();
+  }
+
+  renderCurrentAddScore = () => {
+    const { addScore } = this.props;
+    console.log('render');
+    if (addScore !== 0) {
+      addScoreFlag = !addScoreFlag;
+      return (
+        <span id="addCurrnetScore" className={`addScore-${addScoreFlag}`}>{`+${addScore}`}</span>
+      );
+    }
+    return null;
+  }
+
+  renderBestAddScore = () => {
+    const { bestScore, currentScore, addScore } = this.props;
+    if (currentScore >= bestScore && addScore !== 0) {
+      addBestScoreFlag = !addBestScoreFlag;
+      return (
+        <span id="addBestScore" className={`addScore-${addBestScoreFlag}`} >{`+${addScore}`}</span>
+      );
+    }
+    return null;
   }
 
   renderBestScore = () => {
@@ -20,19 +48,22 @@ export default class SorceArea extends React.Component {
   }
   render() {
     const { currentScore } = this.props;
-    if (currentScore === 2048) {
-      alert('Congratulations, You Win!');
-    }
     return (
       <div className="SorceArea">
         <div className="head">
           <h1 className="title-2048">2048</h1>
           <div className="score_container">
             <div className="curentSorce">
+              {
+                this.renderCurrentAddScore()
+              }
               <span className="score-font">Sorces</span>
               <span>{currentScore}</span>
             </div>
             <div className="bestSorce">
+              {
+                this.renderBestAddScore()
+              }
               <span className="score-font">Best Sorces</span>
               {
                 this.renderBestScore()
