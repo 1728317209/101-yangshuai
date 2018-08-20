@@ -1,20 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { persistStore, persistCombineReducers } from 'redux-persist';
 import { createLogger } from 'redux-logger';
-import storage from 'redux-persist/es/storage';
 import rootReducer from '../reducers';
 import serverApi from '../middleware/serverApi';
 
-const config = {
-  key: 'root',
-  storage
-};
-const reducer = persistCombineReducers(config, rootReducer);
-
 const configureStore = preloadedState => {
   const store = createStore(
-    reducer,
+    rootReducer,
     preloadedState,
     applyMiddleware(thunk, serverApi, createLogger())
   );
@@ -25,9 +17,8 @@ const configureStore = preloadedState => {
       store.replaceReducer(rootReducer);
     });
   }
-  const persistor = persistStore(store);
 
-  return { store, persistor };
+  return store;
 };
 
 export default configureStore;
