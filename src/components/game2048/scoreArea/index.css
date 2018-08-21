@@ -144,4 +144,5 @@ div span {
 }
 .game_restart_btn:hover {
   font-size: 17px;
+  text-shadow:2px 2px 5px #000000;
 }

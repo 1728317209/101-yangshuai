@@ -1,6 +1,9 @@
 import React from 'react';
+import Restart from './restart';
 import './index.css';
 
+// 加分动画部分，如果前后两次的className相同，则没有动画效果
+// 所以，定义两个flag，每次渲染前取反，拼接到className上
 let addScoreFlag = false;
 let addBestScoreFlag = false;
 
@@ -9,11 +12,6 @@ export default class SorceArea extends React.Component {
     super(props);
     this.state = {
     };
-  }
-
-  handleRestart = () => {
-    const { Actions } = this.props;
-    Actions.restart();
   }
 
   renderCurrentAddScore = () => {
@@ -38,15 +36,8 @@ export default class SorceArea extends React.Component {
     return null;
   }
 
-  renderBestScore = () => {
-    const { bestScore, currentScore } = this.props;
-    if (currentScore > bestScore) {
-      return <span>{currentScore}</span>;
-    }
-    return <span>{bestScore}</span>;
-  }
   render() {
-    const { currentScore } = this.props;
+    const { currentScore, bestScore, Actions } = this.props;
     return (
       <div className="SorceArea">
         <div className="head">
@@ -64,22 +55,11 @@ export default class SorceArea extends React.Component {
                 this.renderBestAddScore()
               }
               <span className="score-font">Best Sorces</span>
-              {
-                this.renderBestScore()
-              }
+              <span>{bestScore}</span>
             </div>
           </div>
         </div>
-        <div className="game_infro">
-          <div className="game_intro">
-            <span>Keypressing W S A D on PC.</span>
-            <span>Touch moving on Phone.</span>
-            <span>Join it & have fun!</span>
-          </div>
-          <div className="game_restart">
-            <div className="game_restart_btn" onClick={this.handleRestart}>Restart</div>
-          </div>
-        </div>
+        <Restart Actions={Actions} />
       </div>
     );
   }

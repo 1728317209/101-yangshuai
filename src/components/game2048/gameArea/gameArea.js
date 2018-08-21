@@ -1,6 +1,8 @@
 import React from 'react';
 import './index.css';
 
+// 出现和合并动画，如果前后两次的className相同，则没有动画效果
+// 所以，定义两个flag，每次渲染前取反，拼接到className上
 let appearedFlag = false;
 let mergeFlag = false;
 
@@ -13,7 +15,7 @@ export default class GameArea extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { Actions } = this.props;
     window.addEventListener('keydown', this.onKeyDown);
     Actions.restart();
@@ -21,29 +23,27 @@ export default class GameArea extends React.Component {
 
   onKeyDown = e => {
     const { Actions } = this.props;
+    // 不同方向 Actions.moveGrid()携带不同参数
     switch (e.keyCode) {
       case 38:
       case 87:
         e.preventDefault();
-        console.log('上');
-        Actions.moveGrid(2); // 2
+        Actions.moveGrid(2); // 向上2
         break;
       case 40:
       case 83:
         e.preventDefault();
-        console.log('下');
-        Actions.moveGrid(3); // 3
+        Actions.moveGrid(3); // 向下3
         break;
       case 37:
       case 65:
         e.preventDefault();
-        console.log('左');
-        Actions.moveGrid(0);// 0
+        Actions.moveGrid(0);// 向左0
         break;
       case 39:
       case 68:
-        console.log('右');
-        Actions.moveGrid(1); // 1
+        e.preventDefault();
+        Actions.moveGrid(1); // 向右1
         break;
       default:
         break;
@@ -51,19 +51,10 @@ export default class GameArea extends React.Component {
   }
 
   onTouchStart = e => {
-    console.log('start');
-    console.log(e.touches[0].clientX);
-    console.log(e.touches[0].clientY);
     this.setState({
       startX: e.touches[0].clientX,
       startY: e.touches[0].clientY
     });
-  }
-
-  onTouchMove = e => {
-    console.log('moving');
-    console.log(e.touches[0].clientX);
-    console.log(e.touches[0].clientY);
   }
 
   onTouchEnd = e => {
@@ -72,25 +63,21 @@ export default class GameArea extends React.Component {
     const endY = e.changedTouches[0].clientY;
     const moveX = endX - this.state.startX;
     const moveY = endY - this.state.startY;
+    // 误触处理
     const divX = e.changedTouches[0].target.clientWidth;
     const divY = e.changedTouches[0].target.clientHeight;
-    // 误触
     if (Math.abs(moveX) < 0.1 * divX || Math.abs(moveY) < 0.1 * divY) {
       return null;
     } else if (Math.abs(moveX) > Math.abs(moveY)) {
       if (moveX > 0) {
-        console.log('右');
         Actions.moveGrid(1);// 向右
       } else {
-        console.log('左');
         Actions.moveGrid(0);// 向左
       }
     } else if (Math.abs(moveX) <= Math.abs(moveY)) {
       if (moveY < 0) {
-        console.log('上');
         Actions.moveGrid(2);// 向上
       } else {
-        console.log('下');
         Actions.moveGrid(3);// 向下
       }
     }
@@ -102,23 +89,19 @@ export default class GameArea extends React.Component {
     return className;
   }
 
-  renderGameGrid = (gameGrid, flag) => gameGrid.map((lineItem, lineIdx) => {
-    return lineItem.map((item, idx) => {
-      if (item) {
-        if (flag[lineIdx][idx] === 1) {
-          console.log('.................', appearedFlag);
-          appearedFlag = !appearedFlag;
-          console.log('.................', appearedFlag);
-          return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} appeared-${appearedFlag}`}>{item}</div>;
-        } else if (flag[lineIdx][idx] === 2) {
-          mergeFlag = !mergeFlag;
-          return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} merge-${mergeFlag}`}>{item}</div>;
-        }
-        return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item}`}>{item}</div>;
+  renderGameGrid = (gameGrid, flag) => gameGrid.map((lineItem, lineIdx) => lineItem.map((item, idx) => {
+    if (item) {
+      if (flag[lineIdx][idx] === 1) {
+        appearedFlag = !appearedFlag;
+        return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} appeared-${appearedFlag}`}>{item}</div>;
+      } else if (flag[lineIdx][idx] === 2) {
+        mergeFlag = !mergeFlag;
+        return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item} merge-${mergeFlag}`}>{item}</div>;
       }
-      return <div key={`${lineIdx}-${idx}`} className="gameItem" />;
-    });
-  });
+      return <div key={`${lineIdx}-${idx}`} className={`gameItem Num${item}`}>{item}</div>;
+    }
+    return <div key={`${lineIdx}-${idx}`} className="gameItem" />;
+  }));
 
   render() {
     const { gameGrid, flag } = this.props;

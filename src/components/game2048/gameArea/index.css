@@ -77,7 +77,6 @@
   line-height: 2.9;
 }
 .alter {
-  /* z-index: 100; */
   position: absolute;
 }
 .appeared-true {
@@ -86,13 +85,13 @@
 }
 @keyframes appeared-true {
   0%   {
-    border: 10px solid white;
+    border: 10px solid #f0bb0e;
   }
   25%  {
     border: 3px solid white;
   }
   50%  {
-    border: 7px solid white;
+    border: 7px solid #f0bb0e;
   }
   100% {
     border: 3px solid white;
@@ -104,13 +103,13 @@
 }
 @keyframes appeared-false {
   0%   {
-    border: 10px solid white;
+    border: 10px solid #f0bb0e;
   }
   25%  {
     border: 3px solid white;
   }
   50%  {
-    border: 7px solid white;
+    border: 7px solid #f0bb0e;
   }
   100% {
     border: 3px solid white;

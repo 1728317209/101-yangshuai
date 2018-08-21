@@ -1,0 +1,32 @@
+.mask {
+  position: fixed;
+  display: flex;
+  width: 120px;
+  height: 50px;
+  z-index: 500;
+  left: 50%;
+  margin-left: -60px;
+  text-align: center;
+  background: rgba(255, 255, 255, .4);
+  justify-content: space-around;
+  animation:addScore-true 1500ms;
+  animation-fill-mode: forwards;
+  -webkit-animation:addScore-true 1500ms ease-in-out; /* Safari and Chrome */
+  -webkit-animation-fill-mode: forwards;
+}
+@keyframes addScore-true {
+  from {
+    opacity: 0;
+    top: 0px;
+}
+  to {
+    opacity: 1;
+    top: 25%;
+  }
+}
+.result {
+  align-self: center;
+  font-size: 17px;
+  font-weight: bold;
+  color: red;
+}

@@ -4,7 +4,6 @@ import { createLogger } from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import rootReducer from '../reducers';
-import serverApi from '../middleware/serverApi';
 
 const persistConfig = {
   key: 'root',
@@ -16,7 +15,7 @@ const configureStore = preloadedState => {
   const store = createStore(
     persistedReducer,
     preloadedState,
-    applyMiddleware(thunk, serverApi, createLogger())
+    applyMiddleware(thunk, createLogger())
   );
 
   if (module.hot) {
