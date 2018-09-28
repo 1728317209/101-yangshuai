@@ -5,7 +5,6 @@ import * as ActionTypes from '../const/ActionTypes';
 export function moveGrid(direction) {
   return {
     type: ActionTypes.MOVE_GRID,
-    // type: ActionTypes.MOVE_GRID,
     direction
   };
 }
