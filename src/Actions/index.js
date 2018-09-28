@@ -10,7 +10,10 @@ export function moveGrid(direction) {
   };
 }
 // export function moveGrid(direction) {
-
+//   return {
+//     type: ActionTypes.MOVE_GRID,
+//     direction
+//   };
 // }
 
 export function restart() {
