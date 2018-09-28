@@ -8,6 +8,12 @@ export function moveGrid(direction) {
     direction
   };
 }
+// export function moveGrid(direction) {
+//   return {
+//     type: ActionTypes.MOVE_GRID,
+//     direction
+//   };
+// }
 
 export function restart() {
   return {
